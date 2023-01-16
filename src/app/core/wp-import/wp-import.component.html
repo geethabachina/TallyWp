@@ -161,6 +161,34 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
+                                    <div *ngIf="btn=='TS'||btn=='CR'" class="col-6">
+                                        <label class="label-style table-f-color">Handling Resources</label>
+                                        <select class="form-control custom-form" [(ngModel)]="resources" name="resources" formControlName="resources" [ngClass]="{ 'is-invalid': importForm.controls['resources'].touched && importForm.controls['resources'].invalid }">
+                                            <option value=null>Select Handling Resources</option>
+                                            <option value="Resources 1">Resources 1</option>
+                                            <option value="Resources 2">Resources 2</option>
+                                        </select>
+                                    </div>
+                                    <div *ngIf="btn=='CR'||btn=='TN'" class="col-6">
+                                        <label class="label-style  table-f-color">DO</label>
+                                        <input type="text" class="form-control custom-form" [(ngModel)]="resources" [ngModelOptions]="{standalone: true}" placeholder="DO">
+                                    </div>
+                                    <div *ngIf="btn=='TN'" class="col-6">
+                                        <label class="label-style  table-f-color">Transfer Note Mode</label>
+                                        <select class="form-control custom-form" [(ngModel)]="resources" [ngModelOptions]="{standalone: true}">
+                                            <option value=null>Select Transfer Note Mode</option>
+                                            <option value="Note 1">Note 1</option>
+                                            <option value="Note 2">Note 2</option>
+                                        </select>                                    
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div *ngIf="btn=='CR'" class="col-6">
+                                        <label class="label-style table-f-color">Lorry IC No</label>
+                                        <input type="text" class="form-control custom-form" [(ngModel)]="resources" [ngModelOptions]="{standalone: true}" placeholder="Lorry IC No">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
                                     <div class="col-12">
                                         <label class="label-style table-f-color">Remarks</label>
                                         <textarea name="remarks" class="form-control custom-form" [(ngModel)]="remarks" [ngModelOptions]="{standalone: true}" rows="2" cols="50" placeholder="Remarks"></textarea>

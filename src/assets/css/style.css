@@ -58,7 +58,7 @@ body{font-family: 'Poppins', sans-serif !important;scrollbar-width: thin;}
 .blue-under {color: #2294e3;text-decoration: underline;cursor: pointer;}
 .label-title {font-size: 12px;color: #757575;margin: 0;}
 .field-value{font-size: 14px;color: #000000;font-weight: 500;margin-bottom: 16px;;}
-.placeholder-title {font-size: 13px !important;font-family: 'Roboto';margin-bottom: 2px;}
+.placeholder-title {font-size: 12px !important;font-family: 'Roboto';margin-bottom: 2px;}
 .required:after {color: red;content: " *";display: inline;}
 .status-circle {width: 10px;height: 10px;border-radius: 100%;float: left;margin-right: 5px;margin-top: 6px;}
 .status-green {background: #11ba04;}
@@ -189,7 +189,7 @@ body.small-menu .left-menu ul li a i, body.small-menu .third-level ul li a i{mar
   .pb-2{padding-bottom: 2rem !important;}
 
 .custom-table{border: 1px solid #dee2e6;
-  font-size: 14px;
+  font-size: 13px;
   background: #fff;
   box-shadow: rgb(50 50 105 / 15%) 0px 2px 5px 0px, rgb(0 0 0 / 5%) 0px 1px 1px 0px;
  }

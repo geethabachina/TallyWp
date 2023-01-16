@@ -46,6 +46,7 @@ export class WpImportComponent implements OnInit {
  ]
  blList: any = [];
  btn: any;
+ resources: any = null;
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -60,6 +61,7 @@ export class WpImportComponent implements OnInit {
         quantity: ['', Validators.required],
         location: ['', Validators.required],
         lorryNo: ['', Validators.required],
+        resources: [null],
        // scn: [null],
        // blNo: [null]
     });
