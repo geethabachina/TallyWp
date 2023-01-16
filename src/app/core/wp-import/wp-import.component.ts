@@ -69,28 +69,8 @@ export class WpImportComponent implements OnInit {
       this.mode = params['mode'];
       if(this.mode=='edit'){
         this.edit();
-      }else{
-        this.add();
       }
     })
-  }
-  add(){
-    this.scn = null ;
-    this.blNo = '' ;
-    this.selectedData.date = '' ;
-    this.selectedData.berthNo = '' ;
-    this.selectedData.tallyNo = '' ;
-    this.selectedData.shipName = '' ;
-    this.cargoName ='' ;
-    this.quantity = '' ;
-    this.pieces = '' ;
-    this.hatch = '' ;
-    this.location = null ;
-    this.lorryNo = '' ;
-    this.containerNo = '' ;
-    this.remarks = '' ;
-    this.startTime = "";
-    this.endTime = "";
   }
  
   edit(){
@@ -108,8 +88,6 @@ export class WpImportComponent implements OnInit {
     this.lorryNo = 'VCA123' ;
     this.containerNo = '' ;
     this.remarks = '' ;
-    this.startTime = "8:00 AM";
-    this.endTime = "8:40 AM";
   }
 
   scnChanged(scn:any){

@@ -1,5 +1,5 @@
 <section>
-    <div class="bg-login">
+    <div class="bg-login custom-bg">
         <form class="form-signin1" [formGroup]="importForm">
             <!-- <h1 class="mb-3" style="padding-top: 50px;"></h1> -->
             <h1 class="mb-3" style="padding-top: 10px;"></h1>
@@ -9,7 +9,7 @@
                     <a class="hand back-color" routerLinkActive="active" routerLink="/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                 </div> -->
                 
-                <h3 class="table-f-color" style="font-family: 'Cedarville Cursive'">TALLY APP</h3>
+                <h3 class="custom-title" style="font-family: 'Cedarville Cursive'">TALLY APP</h3>
                 <!-- <div class="row" style="justify-content: right;padding-right: 1rem !important;margin-top: -35px;">
                     <img  style="width: 22px;height: 22px;" routerLinkActive="active" routerLink="/logout" src="assets/css/images/logout3-removebg.png" class="image logo">
                 </div> -->
@@ -19,12 +19,12 @@
                     <div class="col1">
                                 <div class="row mb-2">
                                     <div class="col-12">
-                                        <input type="text" class="form-control form-control-sm" [(ngModel)]="searchValue" (keyup)="search()" placeholder="Search"  [ngModelOptions]="{standalone: true}">
+                                        <input type="text" class="form-control custom-form" [(ngModel)]="searchValue" (keyup)="search()" placeholder="Search"  [ngModelOptions]="{standalone: true}">
                                     </div>
                                 </div>  
-                                <div class="" style="max-width: 530px;overflow: auto;"> 
-                                <table class="table" style="border: 1px solid #dee2e6;font-size: 13px;">
-                                        <thead style="background: orange;">
+                                <div class="table-responsive" style="max-width: auto;overflow: auto; width: auto;"> 
+                                <table class="table custom-table">
+                                        <thead>
                                         <tr>
                                             <th scope="col">
                                             <span>Date</span>

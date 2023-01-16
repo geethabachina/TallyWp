@@ -15,8 +15,6 @@ export class LoginComponent implements OnInit {
   submitted: any = false;
   hide: boolean = true;
 
- 
-
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -33,7 +31,6 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit() {
-    // debugger
     this.submitted = true;
     if(this.loginForm.invalid){
       for (var i in this.loginForm.controls) {
@@ -53,6 +50,8 @@ export class LoginComponent implements OnInit {
   showPassword() {
     this.hide = !this.hide;
   }
+
+
 
 
 

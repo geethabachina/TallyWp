@@ -19,6 +19,14 @@
     color: white;
     /* color: black; */
   }
+  .custom-form{
+    color: #2a3a43 !important;
+    background-color: #fff;
+    border-radius: 20px !important;
+    border: 1px solid #d5d4d4 !important;
+    box-shadow: rgb(0 0 0 / 4%) 0px 3px 16px;
+  }
+  ::placeholder { color: #2a3a43 !important; opacity: 0.5;}
  
   /* desktop */
   @media only screen and (min-width: 415px) {
@@ -94,7 +102,7 @@
     margin-top: 5vh;
   }
   .bg-login{
-    background-image:linear-gradient(rgba(245,70,66, 0.75),rgba(8,83,156, 0.75));
+    background-image:linear-gradient(#00477a,rgb(4 72 96 / 74%));
     height: 100%;
     width: 100%;
     position: fixed;
@@ -167,8 +175,10 @@
 
 .label-style{
   float: left;
-  font-size: 13px;
-  margin-bottom: 0px;
+    font-size: 14px;
+    margin-bottom: 4px;
+    margin-left: 12px;
+    color: #2a3a43;
 }
 
 /* .button:active {

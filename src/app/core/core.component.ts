@@ -41,7 +41,7 @@ export class CoreComponent implements OnInit {
   }
 
   addView(){
-    this.router.navigate(['/core/wpImport'], { queryParams: { mode:'add' }}); 
+    this.router.navigate(['/core/wpImport']);
     var element1 = document.getElementById("list");
     element1?.classList.remove("bg-color-blue");
     var element2 = document.getElementById("add");
