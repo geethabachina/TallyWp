@@ -26,21 +26,23 @@ export class SelectOptionComponent implements OnInit {
   ngOnInit() {}
 
 
-  onSubmit() {
-    this.submitted = true;
-    if(this.loginForm.invalid){
-      for (var i in this.loginForm.controls) {
-        this.loginForm.controls[i].markAsTouched();
-      }
-      return;
-    }
-  //  this.router.navigate(['core/selectOption']);
-    this.router.navigate(['selectOption']);
-  }
+  // onSubmit() {
+  //   this.submitted = true;
+  //   if(this.loginForm.invalid){
+  //     for (var i in this.loginForm.controls) {
+  //       this.loginForm.controls[i].markAsTouched();
+  //     }
+  //     return;
+  //   }
+  // //  this.router.navigate(['core/selectOption']);
+  //    this.router.navigate(['selectOption']);
+  // }
 
   btnClick(btnName:any){
     // this.router.navigate(['core/import'], { queryParams: { btn:btnName }});
-    this.router.navigate(['import'], { queryParams: { btn:btnName }});
+    // this.router.navigate(['import'], { queryParams: { btn:btnName }});
+    localStorage.setItem('btnType', btnName);
+    this.router.navigate(['/core/wpApprove'], { queryParams: { btn:btnName }});
   }
 
 

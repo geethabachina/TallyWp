@@ -13,7 +13,7 @@ export class WpApproveComponent implements OnInit {
   importForm: FormGroup;
   scn: any = null;
   hatchNo: any = null;
-  fromBtn: any;
+  btn: any;
   searchValue: any;
   data: any = [
     {id:'1',tallyNo:'A589106',date:'14/12/2023',lorryNo:'VCA123'},
@@ -57,7 +57,7 @@ export class WpApproveComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.fromBtn = params['btn'];
+      this.btn = params['btn'];
     })
     this.dashboardService.setListBtnBg();
   }
@@ -65,7 +65,7 @@ export class WpApproveComponent implements OnInit {
   edit(){
     // this.router.navigate(['wpImport'], { queryParams: { mode:'edit' }});
     this.dashboardService.setAddBtnBg();
-    this.router.navigate(['/core/wpImport'], { queryParams: { mode:'edit' }});
+    this.router.navigate(['/core/wpImport'], { queryParams: { mode:'edit',btn:this.btn }});
   }
 
   reset(){

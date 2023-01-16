@@ -33,7 +33,9 @@ export class CoreComponent implements OnInit {
   }
 
   listView(){
-    this.router.navigate(['/core/wpApprove']);
+    var btnType = localStorage.getItem('btnType');
+    // this.router.navigate(['/core/wpApprove']);
+    this.router.navigate(['/core/wpApprove'], { queryParams: { btn:btnType }});
     var element1 = document.getElementById("list");
     element1?.classList.add("bg-color-blue");
     var element2 = document.getElementById("add");
@@ -41,7 +43,9 @@ export class CoreComponent implements OnInit {
   }
 
   addView(){
-    this.router.navigate(['/core/wpImport']);
+    var btnType = localStorage.getItem('btnType');
+    // this.router.navigate(['/core/wpImport']);
+    this.router.navigate(['/core/wpImport'], { queryParams: { mode:'add',btn:btnType }});
     var element1 = document.getElementById("list");
     element1?.classList.remove("bg-color-blue");
     var element2 = document.getElementById("add");

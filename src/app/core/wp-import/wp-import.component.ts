@@ -45,6 +45,7 @@ export class WpImportComponent implements OnInit {
   {scn:'22NCEP',list:[{val:"WPI091026",type:'import',blNo:'103417TJ213',cargoName:'PIPES - BUNDLE (BB)'},{val:"WPI091234",type:'import',blNo:'103417LB105',cargoName:'COIL (BB)'},{val:"WPI091478",type:'import',blNo:'BHD22116511',cargoName:'COIL (BB)'},{val:"WPI090953",type:'import',blNo:'103417LB101',cargoName:'COIL (BB)'}]},  
  ]
  blList: any = [];
+ btn: any;
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -67,6 +68,7 @@ export class WpImportComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.mode = params['mode'];
+      this.btn = params['btn'];//TS,CR,TN
       if(this.mode=='edit'){
         this.edit();
       }

@@ -39,12 +39,12 @@ export class LoginComponent implements OnInit {
       return;
     }
    // this.router.navigate(['core/selectOption']);
-  //  this.router.navigate(['selectOption']);
+   this.router.navigate(['selectOption']);
     //  this.router.navigate(['wpImport']);
 
      //this.router.navigate(['wpApprove']);
     //  this.dashboardService.setBtnBg();
-     this.router.navigate(['/core/wpApprove']);
+    //  this.router.navigate(['/core/wpApprove']);
   }
 
   showPassword() {
