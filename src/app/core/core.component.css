@@ -1,0 +1,35 @@
+  /* desktop */
+@media only screen and (min-width: 415px) {
+    .notShow{
+      display: none;
+    }
+}
+
+.btn1:hover {
+    background-color:#0B257F;
+    color: white;
+}
+
+
+
+/* .btn1:focus {
+    background-color: red;
+    color: white;
+}
+.btn1:active {
+    background-color:red;
+    color: white;
+}
+.btn1:visited {
+    background-color:red;
+    color: white;
+} */
+
+.bgcolor a.active {
+    background-color:#0B257F;
+    color: white;
+}
+.bg-color-blue{
+    background-color:#0B257F;
+    color: white;
+}

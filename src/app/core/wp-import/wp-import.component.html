@@ -1,0 +1,211 @@
+
+<section>
+    <div class="bg-login" style="overflow: auto;">
+        <form class="form-signin1" [formGroup]="importForm">
+            <h1 class="mb-3"></h1>
+            <div class="loginbox">
+               <!-- <h2 class="table-f-color">TALLY APP</h2>
+                 <div class="row" style="justify-content: right;padding-right: 1rem !important;">
+                    <a class="hand back-color" routerLinkActive="active" routerLink="/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                </div> -->
+                
+                <h3 class="table-f-color" style="font-family: 'Cedarville Cursive'">TALLY APP</h3>
+                <!-- <div class="row" style="justify-content: right;padding-right: 1rem !important;margin-top: -35px;">
+                    <img  style="width: 22px;height: 22px;" routerLinkActive="active" routerLink="/logout" src="assets/css/images/logout3-removebg.png" class="image logo">
+                </div> -->
+
+                <div class="row pt-4">
+                    <div class="col">
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <!-- <input type="text" class="form-control" placeholder="SCN" > -->
+                                        <label class="label-style required table-f-color">SCN</label>
+                                        <select class="form-control form-control-sm" [(ngModel)]="scn" (change)="scnChanged(scn)" name="scn" formControlName="scn" [ngClass]="{ 'is-invalid': importForm.controls['scn'].touched && importForm.controls['scn'].invalid }">
+                                            <option value=null>Select SCN</option>
+                                            <option value="22OCFF">22OCFF</option>
+                                            <option value="22NCEP">22NCEP</option>
+                                            <option value="22NCKQ">22NCKQ</option>
+                                            <option value="22NCAF">22NCAF</option>
+                                            <option value="22OBHG">22OBHG</option>
+                                        </select>
+                                        <div *ngIf="importForm.controls['scn'].touched && importForm.controls['scn'].invalid" class="alert">
+                                            <div *ngIf="importForm.controls['scn'].errors && importForm.controls['scn'].errors['required']">is required.</div>
+                                        </div>
+                                    </div>
+                                     <div class="col-6">
+                                        <label class="label-style required table-f-color">Import/Export</label>
+                                        <!-- <select class="form-control form-control-sm" [(ngModel)]="document" [ngModelOptions]="{standalone: true}">
+                                            <option value=null>Select Import/Export</option>
+                                            <option value="Import">Import 1</option>
+                                            <option value="Import">Import 2</option>
+                                            <option value="Export">Export 1</option>
+                                            <option value="Export">Export 2</option>
+                                            <option value="Export">Export 3</option>
+                                        </select> -->
+                                        <select class="form-control" [(ngModel)]="document" (change)="importChanged(document)" [ngModelOptions]="{standalone: true}">
+                                            <option value=null>Select</option>
+                                            <option *ngFor="let row of blList" [ngValue]="row.val" >{{row?.val}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                               
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <label class="label-style table-f-color">Date</label>
+                                        <input type="text" class="form-control form-control-sm" [(ngModel)]="selectedData.date" [ngModelOptions]="{standalone: true}" placeholder="Date" disabled>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="label-style table-f-color">Berth No</label>
+                                        <input type="text" class="form-control form-control-sm" [(ngModel)]="selectedData.berthNo" [ngModelOptions]="{standalone: true}" placeholder="Berth No" disabled>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <label class="label-style table-f-color">B/L No</label>
+                                        <input type="text" class="form-control form-control-sm" [(ngModel)]="blNo" [ngModelOptions]="{standalone: true}" placeholder="B/L No" disabled>
+                                        <!-- <select class="form-control" [(ngModel)]="blNo" (change)="blNoChanged(blNo)" name="blNo" formControlName="blNo" [ngClass]="{ 'is-invalid': importForm.controls['blNo'].touched && importForm.controls['blNo'].invalid }">
+                                            <option value=null>Select B/L No</option>
+                                            <option value="NYKS200007092">NYKS200007092</option>
+                                            <option value="103417LB105">103417LB105</option>
+                                            <option value="UL22366TJKEL02">UL22366TJKEL02</option>
+                                            <option value="103417LB105">KLXG41</option>
+                                            <option value="UL22366TJKEL02">SC2206351I</option>
+                                        </select>
+                                        <div *ngIf="importForm.controls['blNo'].touched && importForm.controls['blNo'].invalid" class="alert">
+                                            <div *ngIf="importForm.controls['blNo'].errors && importForm.controls['blNo'].errors['required']">is required.</div>
+                                        </div> -->
+                                    </div>
+                                    <div *ngIf="mode=='edit'" class="col-6">
+                                        <label class="label-style table-f-color">Tally No</label>
+                                        <input type="text" class="form-control form-control-sm" [(ngModel)]="selectedData.tallyNo" [ngModelOptions]="{standalone: true}" placeholder="Tally No" disabled>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <label class="label-style table-f-color">Ship Name</label>
+                                        <input type="text" class="form-control form-control-sm" [(ngModel)]="selectedData.shipName" [ngModelOptions]="{standalone: true}" placeholder="Ship Name" disabled>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <label class="label-style table-f-color">Cargo Name</label>
+                                        <input type="text" class="form-control form-control-sm" [(ngModel)]="cargoName" [ngModelOptions]="{standalone: true}" placeholder="Cargo Name" disabled>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <label class="label-style table-f-color">Start Time</label>
+                                        <input type="time" class="form-control form-control-sm" [(ngModel)]="startTime" [ngModelOptions]="{standalone: true}" placeholder="Start Time">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="label-style table-f-color">End Time</label>
+                                        <input type="time" class="form-control form-control-sm" [(ngModel)]="endTime" [ngModelOptions]="{standalone: true}" placeholder="End Time">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <label class="label-style required table-f-color">Quantity</label>
+                                        <input type="number" class="form-control form-control-sm" [(ngModel)]="quantity" name="quantity" formControlName="quantity"  placeholder="Quantity" [ngClass]="{ 'is-invalid': importForm.controls['quantity'].touched && importForm.controls['quantity'].invalid }">
+                                        <div *ngIf="importForm.controls['quantity'].touched && importForm.controls['quantity'].invalid" class="alert">
+                                            <div *ngIf="importForm.controls['quantity'].errors && importForm.controls['quantity'].errors['required']">is required.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="label-style table-f-color">Pieces</label>
+                                        <input type="number" class="form-control form-control-sm" [(ngModel)]="pieces" [ngModelOptions]="{standalone: true}" placeholder="Pieces" >
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <label class="label-style required table-f-color">Gross Weight</label>
+                                        <input type="number" class="form-control form-control-sm" [(ngModel)]="weight" [ngModelOptions]="{standalone: true}" placeholder="Gross Weight" >
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="label-style required table-f-color">Hatch</label>
+                                        <input type="text" class="form-control form-control-sm" [(ngModel)]="hatch" [ngModelOptions]="{standalone: true}" placeholder="Hatch" >
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <label class="label-style required table-f-color">Location</label>
+                                        <!-- <input type="text" class="form-control form-control-sm" [(ngModel)]="location" name="location" formControlName="location" placeholder="Location" [ngClass]="{ 'is-invalid': importForm.controls['location'].touched && importForm.controls['location'].invalid }"> -->
+                                        <select class="form-control form-control-sm" [(ngModel)]="location" name="location" formControlName="location" [ngClass]="{ 'is-invalid': importForm.controls['location'].touched && importForm.controls['location'].invalid }">
+                                            <option value=null>Select Location</option>
+                                            <option value="FUEL BAY">FUEL BAY</option>
+                                            <option value="OFFICE WAREHOUSE D">OFFICE WAREHOUSE D</option>
+                                            <option value="CONTAINER WHARF">CONTAINER WHARF</option>
+                                            <option value="DIRECT DELIVERY">DIRECT DELIVERY</option>
+                                            <option value="YARD4">YARD4</option>
+                                            <option value="YARD 4 - ZONE 1">YARD 4 - ZONE 1</option>
+                                            <option value="YARD 4 - ZONE 2">YARD 4 - ZONE 2</option>
+                                            <option value="YARD 5">YARD 5</option>
+                                            <option value="YARD 5A">YARD 5A</option>
+                                            <option value="YARD 5B">YARD 5B</option>
+                                            <option value="YARD 9 - ZONE 1">YARD 9 - ZONE 1</option>
+                                        </select>
+                                        <div *ngIf="importForm.controls['location'].touched && importForm.controls['location'].invalid" class="alert">
+                                            <div *ngIf="importForm.controls['location'].errors && importForm.controls['location'].errors['required']">is required.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="label-style required table-f-color">Lorry No</label>
+                                        <input type="text" class="form-control form-control-sm" [(ngModel)]="lorryNo" name="lorryNo" formControlName="lorryNo" placeholder="Lorry No" [ngClass]="{ 'is-invalid': importForm.controls['lorryNo'].touched && importForm.controls['lorryNo'].invalid }">
+                                        <div *ngIf="importForm.controls['lorryNo'].touched && importForm.controls['lorryNo'].invalid" class="alert">
+                                            <div *ngIf="importForm.controls['lorryNo'].errors && importForm.controls['lorryNo'].errors['required']">is required.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <label class="label-style table-f-color">Container No</label>
+                                        <input type="text" class="form-control form-control-sm" [(ngModel)]="containerNo" [ngModelOptions]="{standalone: true}" placeholder="Container No" >
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <label class="label-style table-f-color">Remarks</label>
+                                        <textarea name="remarks" class="form-control form-control-sm" [(ngModel)]="remarks" [ngModelOptions]="{standalone: true}" rows="2" cols="50" placeholder="Remarks"></textarea>
+                                    </div>
+                                </div>
+                               <!---------------------------------- buttons--------------------------------- -->
+                                <!-- <div class="row mt-3" style="text-align: center;">
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-primary" style="width: 100%;" routerLinkActive="active" routerLink="/wpApprove">Back</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-primary" style="width: 100%;" (click)="save()">Save</button>
+                                    </div>
+                                </div> -->
+
+                                <div class="row mt-2 mb-5" style="justify-content: center;">
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-primary" style="width: 100%;" (click)="save()">Save</button>
+                                    </div>
+                                </div>   
+
+
+                                 <!-- <div class="row notShow" style="text-align: center;background-color: #f8f9fa;
+                                    position: absolute;width: 100% !important;padding: 3px;">
+                                    <div class="col-4">
+                                        <button class="btn" style="color: #777;" routerLinkActive="active" routerLink="/wpApprove"><i class="fa fa-list fa-lg"></i></button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn"  routerLinkActive="active" routerLink="/wpImport"><i class="fa fa-plus fa-lg"></i></button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn" style="color: #777;" routerLinkActive="active" routerLink="/logout"><i class="fa fa-sign-out fa-lg"></i></button>
+                                    </div>
+                                </div>  -->
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+
+
+
+

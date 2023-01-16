@@ -1,0 +1,21 @@
+<div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+  <div class="row notShow bgcolor" style="text-align: center;background-color: #f8f9fa;
+        position: absolute;width: 104% !important;padding: 3px;bottom: 0;">
+        <div class="col-4">
+            <!-- <a class="btn1" (click)="listView()"><i class="fa fa-list fa-lg"></i></a> -->
+            <button class="btn btn1" id="list" (click)="listView()"><i class="fa fa-list fa-lg"></i></button>
+            <!-- <button class="btn btn1" routerLinkActive="active" routerLink="/core/wpApprove"><i class="fa fa-list fa-lg"></i></button> -->
+        </div>
+        <div class="col-4">
+            <!-- <a class="btn1" routerLinkActive="active" routerLink="/core/wpImport"><i class="fa fa-plus fa-lg"></i></a> -->
+            <button class="btn btn1" id="add" (click)="addView()"><i class="fa fa-plus fa-lg"></i></button>
+            <!-- <button class="btn btn1" routerLinkActive="active" routerLink="/core/wpImport"><i class="fa fa-plus fa-lg"></i></button> -->
+        </div>
+        <div class="col-4">
+            <button class="btn btn1" routerLinkActive="active" routerLink="/logout"><i class="fa fa-sign-out fa-lg"></i></button>
+        </div>
+    </div> 
+</div>

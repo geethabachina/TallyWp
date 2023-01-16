@@ -1,0 +1,130 @@
+<section>
+    <div class="bg-login">
+        <form class="form-signin1" [formGroup]="importForm">
+            <!-- <h1 class="mb-3" style="padding-top: 50px;"></h1> -->
+            <h1 class="mb-3" style="padding-top: 10px;"></h1>
+            <div class="loginbox">
+                <!-- <h2 class="table-f-color">TALLY APP</h2>
+                <div class="pull-right pr-2">
+                    <a class="hand back-color" routerLinkActive="active" routerLink="/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                </div> -->
+                
+                <h3 class="table-f-color" style="font-family: 'Cedarville Cursive'">TALLY APP</h3>
+                <!-- <div class="row" style="justify-content: right;padding-right: 1rem !important;margin-top: -35px;">
+                    <img  style="width: 22px;height: 22px;" routerLinkActive="active" routerLink="/logout" src="assets/css/images/logout3-removebg.png" class="image logo">
+                </div> -->
+
+                <div class="pt-4">
+                    <!-- <div class="col1 mx-1"> -->
+                    <div class="col1">
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <input type="text" class="form-control form-control-sm" [(ngModel)]="searchValue" (keyup)="search()" placeholder="Search"  [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>  
+                                <div class="" style="max-width: 530px;overflow: auto;"> 
+                                <table class="table" style="border: 1px solid #dee2e6;font-size: 13px;">
+                                        <thead style="background: orange;">
+                                        <tr>
+                                            <th scope="col">
+                                            <span>Date</span>
+                                            </th>
+                                            <th scope="col">
+                                                <span>Tally No</span>
+                                            </th>
+                                            <th scope="col">
+                                                <span>Lorry No</span>
+                                            </th>
+                                            <th scope="col">
+                                                <span>Actions</span>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="table-f-color">
+                                        <tr *ngFor="let row of data">
+                                            <td>{{row.date}}</td>
+                                            <td>{{row.tallyNo}}</td>
+                                            <td>{{row.lorryNo}}</td>
+                                            <td>
+                                                <span class="pr-3 hand" data-toggle="tooltip" data-placement="top" title="Edit"><i (click)="edit()" class="fa fa-pencil" aria-hidden="true"></i></span>
+                                                <span class="hand" data-toggle="tooltip" data-placement="top" title="Approve"><i (click)="approve(row.id)" class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                                            </td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <td>14/12</td>
+                                            <td>D589107</td>
+                                            <td>VCA123</td>
+                                            <td>
+                                                <span class="pr-3 hand" (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                                                <span class="hand"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>14/12</td>
+                                            <td>B589106</td>
+                                            <td>VCA123</td>
+                                            <td>
+                                                <span class="pr-3 hand" (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                                                <span class="hand"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>14/12</td>
+                                            <td>B589107</td>
+                                            <td>ABC7321</td>
+                                            <td>
+                                                <span class="pr-3 hand" (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                                                <span class="hand"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                                            </td>
+                                        </tr> -->
+                                        <!-- <tr>
+                                            <td>14/12</td>
+                                            <td>C591982</td>
+                                            <td>CEF7321</td>
+                                            <td>
+                                                <span class="pr-3 hand" (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                                                <span class="hand"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                                            </td> -->
+                                            <!-- <td>
+                                                <button type="button" class="btn btn-primary1 f-white"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-primary1 f-white"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                                            </td> -->
+                                        <!-- </tr> -->
+                                        </tbody>
+                                    </table> 
+                                </div> 
+                                    <!-- <div class="row mt-5" style="justify-content: center;">
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-primary" style="width: 100%;" routerLinkActive="active" routerLink="/addWpImport">Back</button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-primary" style="width: 100%;" routerLinkActive="active" routerLink="/logout">Logout</button>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="row notShowBtn mt-2 mb-2" style="justify-content: center;">
+                                        <div class="col-6">
+                                            <button type="button" class="btn btn-primary" style="width: 100%;" routerLinkActive="active" routerLink="/core/wpImport">Add</button>
+                                        </div>
+                                    </div>   
+                                    
+                                    <!-- <div class="row notShow" style="text-align: center;background-color: #f8f9fa;
+                                        position: absolute;width: 100% !important;padding: 3px;bottom:0">
+                                        <div class="col-4">
+                                            <button class="btn" routerLinkActive="active" routerLink="/wpApprove"><i class="fa fa-list fa-lg"></i></button>
+                                        </div>
+                                        <div class="col-4">
+                                            <button class="btn" routerLinkActive="active" routerLink="/wpImport"><i class="fa fa-plus fa-lg"></i></button>
+                                        </div>
+                                        <div class="col-4">
+                                            <button class="btn" routerLinkActive="active" routerLink="/logout"><i class="fa fa-sign-out fa-lg"></i></button>
+                                        </div>
+                                    </div> -->
+
+                                   
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
