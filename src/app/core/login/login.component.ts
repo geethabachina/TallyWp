@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   username: any = '';
   submitted: any = false;
   hide: boolean = true;
+  errorMsgShow: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -32,9 +33,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.errorMsgShow = false;
     if(this.loginForm.invalid){
       for (var i in this.loginForm.controls) {
         this.loginForm.controls[i].markAsTouched();
+        this.errorMsgShow = true;
       }
       return;
     }

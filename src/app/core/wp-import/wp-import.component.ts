@@ -164,7 +164,7 @@ export class WpImportComponent implements OnInit {
       return false;
     }
     //this.spinner.show();
-    this.toastr.success('', 'Saved successfully');
+    this.toastr.success('', 'Tally No "A589106" Saved successfully');
     // this.router.navigate(['wpApprove']);
     this.router.navigate(['/core/wpApprove']);
   }
