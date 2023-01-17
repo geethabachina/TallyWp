@@ -16,6 +16,18 @@
   .back-color{
     color: white;
   }
+  .custom-card{display: flex;align-items: center;justify-content: space-between;border:1px solid #4b359d;
+  background-color: #fff;padding: 8px;box-shadow: rgb(193 184 245) 1px 0px 6px 2px, rgb(0 0 0 / 5%) 0px 1px 1px 0px;
+  border-radius: 17px;}
+  .custom-card h4{color:#5126ec; text-align: left;font-size: 18px;}
+  .mb-0{margin-bottom: 0 !important;}
+  .mt-3{margin-top: 24px !important;}
+  .icon-bg{padding: 4px 10px;
+    background: #5126ec;
+    border-radius: 16px;margin-right: 6px;}
+    .icon-bg .material-icons,.icon-bg .material-icons-outlined{margin-top: 4px;color: #fff;
+      font-size: 30px;}
+    .arrow-icon .material-icons{color: #adb5bd;}
   /* desktop */
   @media only screen and (min-width: 415px) {
     .loginbox {
@@ -50,9 +62,9 @@
   } */
   
   .form-signin1{
-    max-width: 530px;
-    padding-right: 50px;
-    padding-left: 50px;
+    /* max-width: 530px; */
+    padding-right: 16px;
+    padding-left: 16px;
     margin: 0 auto;
     text-align: center;
   }

@@ -2,13 +2,13 @@
 <section>
     <div class="bg-login custom-bg" style="overflow: auto;">
         <form class="form-signin1">
-            <h1 class="mb-3"></h1>
+            <h1 class="mb-3" style="padding-top: 10px;"></h1>
             <div class="loginbox">
-                <h3 class=" custom-title" style="font-family: 'Cedarville Cursive';padding-top: 150px;">TALLY APP</h3>
-                <div class="row pt-4 pb-2">
-                    <div class="col">
+                <h3 class=" custom-title" style="font-family: 'Cedarville Cursive';">TALLY APP</h3>
+                <!-- <div class="row pt-4 pb-2">
+                    <div class="col"> -->
                         <!---------------------------------- buttons--------------------------------- -->
-                        <div class="row mt-2 mb-5" style="justify-content: center;">
+                        <!-- <div class="row mt-2 mb-5" style="justify-content: center;">
                             <div class="col-12 mb-3">
                                 <button type="button" class="btn btn-primary custom-btn" (click)="btnClick('TS')" style="width: 100%;">Tally Sheet</button>
                             </div>
@@ -18,10 +18,58 @@
                             <div class="col-12">
                                 <button type="button" class="btn btn-primary custom-btn" (click)="btnClick('TN')" style="width: 100%;">Transfer Note</button>
                             </div>
-                        </div>   
+                        </div>    -->
+                        <div class="mt-3">
+                        <div class="mb-3">
+                            <div class="custom-card" (click)="btnClick('TS')">
+                              <div style="display: flex; align-items:center;">
+                                <span class="icon-bg"><span class="material-icons">
+                                checklist_rtl
+                                </span></span>
+                                <h4 class="mb-0"> Tally Sheet</h4></div>
+                                <div class="arrow-icon">
+                                    <span class="material-icons">
+                                        arrow_forward_ios
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="custom-card" (click)="btnClick('CR')">
+                              <div style="display: flex; align-items:center;">
+                                <span class="icon-bg">
+                                    <span class="material-icons">
+                                        mark_as_unread
+                                    </span>
+                                </span>
+                                <h4 class="mb-0"> Cargo Receiver</h4></div>
+                                <div class="arrow-icon">
+                                    <span class="material-icons">
+                                        arrow_forward_ios
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="custom-card" (click)="btnClick('TN')">
+                              <div style="display: flex; align-items:center;">
+                                <span class="icon-bg">
+                                    <span class="material-icons-outlined">
+                                        description
+                                        </span>
+                            </span>
+                                <h4 class="mb-0"> Transfer Note</h4></div>
+                                <div class="arrow-icon">
+                                    <span class="material-icons">
+                                        arrow_forward_ios
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
 
-                    </div>
-                </div>
+                    <!-- </div>
+                </div> -->
             </div>
         </form>
     </div>
