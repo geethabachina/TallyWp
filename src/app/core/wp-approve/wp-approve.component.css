@@ -1,3 +1,22 @@
+/* start search icon css */
+.password-container{
+  /* width: 400px; */
+  position: relative;
+}
+.password-container input[type="text"]{
+  width: 100%;
+  padding: 12px 36px 12px 12px;
+  box-sizing: border-box;
+}
+.fa-search{
+  position: absolute;
+  top: 28%;
+  right: 4%;
+  cursor: pointer;
+  color: gray;
+}
+/* end search icon css */
+
 
 /* mobile */
 .btn-width{
@@ -165,7 +184,7 @@
  } */
  
 .form-control{
-    font-size: 13px;
+    font-size: 14px;
 }
 /* .nav-secondary a.active {
     border-bottom: solid #f7a941 2px;
@@ -181,5 +200,12 @@
 
 .btn:focus {
   background-color: #0B257F;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  /* background-color: #007bff; */
+  background: linear-gradient(78deg, rgba(81,38,236,1) 0%, rgb(152 116 240) 47%, #d598d3 100%) !important;
 }
 

@@ -20,7 +20,11 @@
                     <div class="col1">
                                 <div class="row mb-2">
                                     <div class="col-12">
-                                        <input type="text" class="form-control custom-form" [(ngModel)]="searchValue" (keyup)="search()" placeholder="Search"  [ngModelOptions]="{standalone: true}">
+                                        <!-- <input type="text" class="form-control custom-form" [(ngModel)]="searchValue" (keyup)="search()" placeholder="Search"  [ngModelOptions]="{standalone: true}"> -->
+                                        <div class="password-container">
+                                            <input style="font-family:Open sans-serif" type="text" [(ngModel)]="searchValue" class="form-control custom-form" placeholder="Lorry No / SCN / Tally No" [ngModelOptions]="{standalone: true}">
+                                            <i class="fa fa-search" id="eye"></i>
+                                        </div>
                                     </div>
                                 </div>  
                                 <div class="table-responsive" style="max-width: auto;overflow: auto; width: auto;"> 
@@ -29,7 +33,7 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">
-                                            <span>Date</span>
+                                                <span>Date</span>
                                             </th>
                                             <th scope="col">
                                                 <span>Tally No</span>

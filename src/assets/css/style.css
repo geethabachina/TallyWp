@@ -177,19 +177,20 @@ body.small-menu .left-menu ul li a i, body.small-menu .third-level ul li a i{mar
 
 .custom-form{
   color: #fff !important;
-    background-color: transparent !important;
-    border-radius: 20px !important;
-    border: 1px solid #fff !important;
+  background-color: transparent !important;
+  border-radius: 20px !important;
+  border: 1px solid #fff !important;
 }
 ::placeholder { color: #fff !important; opacity: 0.5;}
 .bg-login.custom-bg{background: #f8f9fa !important;}
 .custom-title{color: #5126ec;
   font-size: 32px;
-  font-weight: 600;}
-  .pb-2{padding-bottom: 2rem !important;}
-
-.custom-table{border: 1px solid #dee2e6;
-  font-size: 13px;
+  font-weight: 600;
+}
+.pb-2{padding-bottom: 2rem !important;}
+.custom-table{
+  border: 1px solid #dee2e6;
+  font-size: 12px;
   background: #fff;
   box-shadow: rgb(50 50 105 / 15%) 0px 2px 5px 0px, rgb(0 0 0 / 5%) 0px 1px 1px 0px;
  }
