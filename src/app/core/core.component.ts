@@ -12,6 +12,7 @@ import { DashboardService } from '../services/dashboard.service';
 export class CoreComponent implements OnInit {
   refresh: Subscription;
   refresh1: Subscription;
+  btnType: any;
 
   constructor(
     private router: Router,
@@ -30,6 +31,7 @@ export class CoreComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.btnType = localStorage.getItem('btnType');
   }
 
   listView(){

@@ -65,7 +65,8 @@
     margin: 0 auto;
     text-align: center;
   }
-  .loginbox .col-6{padding-left: 8px !important; padding-right: 8px !important;}
+  .loginbox .col-6{padding-left: 8px !important; padding-right: 8px !important;} 
+  .loginbox .col-12{padding-left: 8px !important; padding-right: 8px !important;}
   .subtitle {
     color: #66ccff;
     margin-top: 4vh;
@@ -192,5 +193,11 @@
 .btn:focus {
   background-color: #0B257F;
 }
+
+.custom-btn1{
+  border-radius: 20px;
+  background: linear-gradient(90deg, rgba(81,38,236,1) 0%, rgb(152 116 240) 47%, #d598d3 100%) !important
+}
+
 
 

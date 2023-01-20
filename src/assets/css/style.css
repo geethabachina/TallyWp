@@ -60,7 +60,7 @@ body{font-family: 'Poppins', sans-serif !important;scrollbar-width: thin;}
 .field-value{font-size: 14px;color: #000000;font-weight: 500;margin-bottom: 16px;;}
 .placeholder-title {font-size: 12px !important;font-family: 'Roboto';margin-bottom: 2px;}
 .required:after {color: red;content: " *";display: inline;}
-.status-circle {width: 10px;height: 10px;border-radius: 100%;float: left;margin-right: 5px;margin-top: 6px;}
+.status-circle {width: 10px;height: 10px;border-radius: 100%;float: left;margin-right: 5px;margin-top: 4px;}
 .status-green {background: #11ba04;}
 .status-red {background: #e12020;}
 .status-yellow {background-color: rgb(227, 184, 0);}
@@ -102,7 +102,7 @@ body.small-menu .left-menu ul li a i, body.small-menu .third-level ul li a i{mar
   overflow-x: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 180px;
+  max-width: 91px;
 }
 
 .form-control:focus {
@@ -184,7 +184,7 @@ body.small-menu .left-menu ul li a i, body.small-menu .third-level ul li a i{mar
 ::placeholder { color: #fff !important; opacity: 0.5;}
 .bg-login.custom-bg{background: #f8f9fa !important;}
 .custom-title{color: #5126ec;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 600;
 }
 .pb-2{padding-bottom: 2rem !important;}

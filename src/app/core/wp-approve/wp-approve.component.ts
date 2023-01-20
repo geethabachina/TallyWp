@@ -16,16 +16,21 @@ export class WpApproveComponent implements OnInit {
   btn: any;
   searchValue: any;
   data: any = [
-    {id:'1',tallyNo:'A589106',date:'14/12/2023',lorryNo:'VCA123'},
-    {id:'2',tallyNo:'D589107',date:'14/12/2023',lorryNo:'CCA123'},
-    {id:'3',tallyNo:'B589106',date:'14/12/2023',lorryNo:'BCA123'},
-    {id:'4',tallyNo:'B589107',date:'14/12/2023',lorryNo:'ABC7321'},
-    {id:'5',tallyNo:'C591982',date:'14/12/2023',lorryNo:'CEF7321'},
-    {id:'6',tallyNo:'B389106',date:'14/12/2023',lorryNo:'BCA123'},
-    {id:'7',tallyNo:'B586107',date:'14/12/2023',lorryNo:'ABC7321'},
-    {id:'8',tallyNo:'C491982',date:'14/12/2023',lorryNo:'CHF7321'},
-    {id:'9',tallyNo:'B585107',date:'14/12/2023',lorryNo:'AGC7321'},
-    {id:'10',tallyNo:'C581982',date:'14/12/2023',lorryNo:'CJF7321'},
+    {id:'1',tallyNo:'A589106',date:'14/12/2023',lorryNo:'VCA123',SCN:'231AFL',WPENo:'WPE185534',DONo:'VH/0119',TNNo:'TN016659',status:'pending'},
+    {id:'2',tallyNo:'D589107',date:'14/12/2023',lorryNo:'CCA123',SCN:'231AHA',WPENo:'WPE185551',DONo:'20/2023',TNNo:'TN016577',status:'pending'},
+    {id:'3',tallyNo:'B589106',date:'14/12/2023',lorryNo:'BCA123',SCN:'22DALG',WPENo:'WPE185420',DONo:'3112022-1',TNNo:'TN016569',status:'completed'},
+    {id:'4',tallyNo:'B589107',date:'14/12/2023',lorryNo:'ABC7321',SCN:'22NBUF',WPENo:'WPE184804',DONo:'A4953823',TNNo:'TN016447',status:'pending'},
+    {id:'5',tallyNo:'C591982',date:'14/12/2023',lorryNo:'CEF7321',SCN:'22NCFD',WPENo:'WPE184883',DONo:'1025327',TNNo:'TN016421',status:'completed'},
+    {id:'6',tallyNo:'B389106',date:'14/12/2023',lorryNo:'BCA123',SCN:'231AFL',WPENo:'WPE185466',DONo:'',TNNo:'',status:'pending'},
+    {id:'7',tallyNo:'B586107',date:'14/12/2023',lorryNo:'ABC7321',SCN:'22DALG',WPENo:'WPE185420',DONo:'',TNNo:'',status:'completed'},
+    {id:'8',tallyNo:'C491982',date:'14/12/2023',lorryNo:'CHF7321',SCN:'22NBUF',WPENo:'WPE184804',DONo:'',TNNo:'',status:'completed'},
+    {id:'9',tallyNo:'B585107',date:'14/12/2023',lorryNo:'AGC7321',SCN:'22NCFD',WPENo:'WPE184777',DONo:'',TNNo:'',status:'pending'},
+    {id:'10',tallyNo:'C581982',date:'14/12/2023',lorryNo:'CJF7321',SCN:'22NBTW',WPENo:'WPE184578',DONo:'',TNNo:'',status:'pending'},
+    {id:'6',tallyNo:'B389106',date:'14/12/2023',lorryNo:'BCA123',SCN:'231AFL',WPENo:'WPE185466',DONo:'',TNNo:'',status:'completed'},
+    {id:'7',tallyNo:'B586107',date:'14/12/2023',lorryNo:'ABC7321',SCN:'22DALG',WPENo:'WPE185420',DONo:'',TNNo:'',status:'pending'},
+    {id:'8',tallyNo:'C491982',date:'14/12/2023',lorryNo:'CHF7321',SCN:'22NBUF',WPENo:'WPE184804',DONo:'',TNNo:'',status:'completed'},
+    {id:'9',tallyNo:'B585107',date:'14/12/2023',lorryNo:'AGC7321',SCN:'22NCFD',WPENo:'WPE184777',DONo:'',TNNo:'',status:'pending'},
+    {id:'10',tallyNo:'abc',date:'14/12/2023',lorryNo:'CJF7321',SCN:'22NBTW',WPENo:'WPE184578',DONo:'',TNNo:'',status:'completed'},
   ]
 
   originalData: any = [
@@ -67,6 +72,15 @@ export class WpApproveComponent implements OnInit {
     this.dashboardService.setAddBtnBg();
     this.router.navigate(['/core/wpImport'], { queryParams: { mode:'edit',btn:this.btn }});
   }
+
+  add(){
+    this.router.navigate(['/core/wpImport'], { queryParams: { mode:'add',btn:this.btn }});
+  }
+
+  // goToTS(){
+  //   this.dashboardService.setAddBtnBg();
+  //   this.router.navigate(['/core/wpImport'], { queryParams: { mode:'edit',btn:'TS',comeFrom:'TN'}});
+  // }
 
   reset(){
     // have to clear all fields data

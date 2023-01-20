@@ -41,12 +41,19 @@ export class WpImportComponent implements OnInit {
     {id:'3',cargoName:'BEAM (BB)',blNo:'UL22366TJKEL02'},
     {id:'4',cargoName:'BEAM (BB)',blNo:'KLXG41'},
     {id:'5',cargoName:'HELICOPTER (RR)',blNo:'SC2206351I'}]
-  imexList: any = [{scn:'22OCFF',list:[{val:"WPI091437",type:'import',blNo:'KKLUTH0918072',cargoName:'TRUCK(RR)'},{val:"WPI091758",type:'import',blNo:'KKLUPCC044034',cargoName:'MOTOR CAR (RR)'},{val:"WPI091103",type:'import',blNo:'KKLUTH0918037',cargoName:'MOTOR CAR (RR)'},{val:"WPI091757",type:'import',blNo:'KKLUPCC044033',cargoName:'MOTOR CAR (RR)'},{val:"WPE184785",type:'export',blNo:'',cargoName:''},{val:"WPE184613",type:'export',blNo:'',cargoName:''}]},
+  imexList: any = [{scn:'22OCFF',list:[{val:"WPI091437",type:'import',blNo:'KKLUTH0918072',cargoName:'TRUCK(RR)'},{val:"WPI091758",type:'import',blNo:'KKLUPCC044034',cargoName:'MOTOR CAR (RR)'},{val:"WPI091103",type:'import',blNo:'KKLUTH0918037',cargoName:'MOTOR CAR (RR)'},{val:"WPI091757",type:'import',blNo:'KKLUPCC044033',cargoName:'MOTOR CAR (RR)'},{val:"WPE184785",type:'export',blNo:'',cargoName:''},{val:"WPE184613",type:'export',blNo:'',cargoName:''},{val:"WPE185534",type:'export',blNo:'',cargoName:''}]},
   {scn:'22NCEP',list:[{val:"WPI091026",type:'import',blNo:'103417TJ213',cargoName:'PIPES - BUNDLE (BB)'},{val:"WPI091234",type:'import',blNo:'103417LB105',cargoName:'COIL (BB)'},{val:"WPI091478",type:'import',blNo:'BHD22116511',cargoName:'COIL (BB)'},{val:"WPI090953",type:'import',blNo:'103417LB101',cargoName:'COIL (BB)'}]},  
  ]
  blList: any = [];
  btn: any;
  resources: any = null;
+ //comeFrom: any = null; 
+ modeValue: any = null;  
+ tallyNo: any;
+ DONo: any;
+ TNNo: any;  
+ importExportType: any;
+ endTimeExist: boolean = false;//edit- have endTime should not edit any fields in TS.
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -71,8 +78,12 @@ export class WpImportComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.mode = params['mode'];
       this.btn = params['btn'];//TS,CR,TN
+      //this.comeFrom = params['comeFrom'];//TN
       if(this.mode=='edit'){
         this.edit();
+      }else{//add
+        var date = new Date();
+        this.startTime = date.toTimeString().substring(0,5);
       }
     })
   }
@@ -82,8 +93,10 @@ export class WpImportComponent implements OnInit {
     this.blNo = 'NYKS200007092' ;
     this.selectedData.date = '14/12/2023' ;
     this.selectedData.berthNo = 'B04' ;
-    this.selectedData.tallyNo = 'A589106' ;
     this.selectedData.shipName = 'JASA MURNI' ;
+    this.tallyNo = 'A589106' ;
+    this.DONo = 'VH/0119' ;
+    this.TNNo = 'TN016659' ;
     this.cargoName ='BOAT (RR)' ;
     this.quantity = '1' ;
     this.pieces = '10' ;
@@ -92,6 +105,10 @@ export class WpImportComponent implements OnInit {
     this.lorryNo = 'VCA123' ;
     this.containerNo = '' ;
     this.remarks = '' ;
+    this.modeValue = "EXPORT";
+    this.document = 'WPE185534';
+    this.scnChanged(this.scn);
+    // this.startTime = "12:49 PM"
   }
 
   scnChanged(scn:any){
@@ -127,6 +144,7 @@ export class WpImportComponent implements OnInit {
     if(index1 > -1) {
       this.blNo = this.blList[index1].blNo;
       this.cargoName = this.blList[index1].cargoName;
+      this.importExportType = this.blList[index1].type
       //this.blNoChanged(this.blNo);
     }
     else{
@@ -166,7 +184,15 @@ export class WpImportComponent implements OnInit {
     //this.spinner.show();
     this.toastr.success('', 'Tally No "A589106" Saved successfully');
     // this.router.navigate(['wpApprove']);
-    this.router.navigate(['/core/wpApprove']);
+    this.router.navigate(['/core/wpApprove'], { queryParams: { btn:this.btn}});
+  }
+
+  end(){
+    this.endTimeExist = true;
+    var date = new Date();
+    this.endTime = date.toTimeString().substring(0,5);
+    this.toastr.success('', 'Tally No "A589106" Saved successfully');
+    this.router.navigate(['/core/wpApprove'], { queryParams: { btn:this.btn}});
   }
 
   reset(){

@@ -36,3 +36,15 @@
     background-color:#0B257F;
     color: white;
 } */
+
+.no-bk {
+    background-color: transparent !important;
+    border-bottom: 0px !important;
+    border: 0px !important;
+}
+.acc-dec-icon {
+    width: 30px;
+}
+.mauto {
+    margin: 0 auto;
+}

@@ -3,18 +3,24 @@
         <div class="bg-login custom-bg">
         <form class="form-signin1" [formGroup]="importForm">
             <!-- <h1 class="mb-3" style="padding-top: 50px;"></h1> -->
-            <h1 class="mb-3" style="padding-top: 10px;"></h1>
+            <h1 class="mb-3"></h1>
             <div class="loginbox">
-                <!-- <h2 class="table-f-color">TALLY APP</h2>
-                <div class="pull-right pr-2">
-                    <a class="hand back-color" routerLinkActive="active" routerLink="/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
-                </div> -->
+                <!-- <h3 class="custom-title" style="font-family: 'Cedarville Cursive'">TALLY APP</h3> -->
+               
+                <div *ngIf="btn=='TS'" class="row" style="margin-bottom: -8px;">
+                    <i style="color: #5126ec;padding-right: 45px;padding-left: 15px;margin-top: 10px;" routerLinkActive="active" routerLink="/selectOption" class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
+                    <h3  class="custom-title" style="justify-content: center;font-family: 'Cedarville Cursive'">TALLY SHEET</h3>
+                </div>
+                <div *ngIf="btn=='CR'" class="row">
+                    <i style="color: #5126ec;padding-right: 15px;padding-left: 15px;margin-top: 10px;" routerLinkActive="active" routerLink="/selectOption" class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
+                    <h4   class="custom-title" style="justify-content: center;font-family: 'Cedarville Cursive'">CARGO RECEIVER</h4>
+                </div>
+                <div *ngIf="btn=='TN'" class="row">
+                    <i style="color: #5126ec;padding-right: 20px;padding-left: 15px;margin-top: 10px;" routerLinkActive="active" routerLink="/selectOption" class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
+                    <h3 class="custom-title" style="justify-content: center;font-family: 'Cedarville Cursive'">TRANSFER NOTE</h3>
+                </div>
                 
-                <h3 class="custom-title" style="font-family: 'Cedarville Cursive'">TALLY APP</h3>
-                <!-- <div class="row" style="justify-content: right;padding-right: 1rem !important;margin-top: -35px;">
-                    <img  style="width: 22px;height: 22px;" routerLinkActive="active" routerLink="/logout" src="assets/css/images/logout3-removebg.png" class="image logo">
-                </div> -->
-
+                
                 <div class="pt-4">
                     <!-- <div class="col1 mx-1"> -->
                     <div class="col1">
@@ -22,83 +28,56 @@
                                     <div class="col-12">
                                         <!-- <input type="text" class="form-control custom-form" [(ngModel)]="searchValue" (keyup)="search()" placeholder="Search"  [ngModelOptions]="{standalone: true}"> -->
                                         <div class="password-container">
-                                            <input style="font-family:Open sans-serif" type="text" [(ngModel)]="searchValue" class="form-control custom-form" placeholder="Lorry No / SCN / Tally No" [ngModelOptions]="{standalone: true}">
+                                            <!-- placeholder="Lorry No / SCN / Tally No" -->
+                                            <input style="font-family:Open sans-serif" type="text" [(ngModel)]="searchValue" class="form-control custom-form" placeholder="Search..."  [ngModelOptions]="{standalone: true}">
                                             <i class="fa fa-search" id="eye"></i>
                                         </div>
                                     </div>
                                 </div>  
-                                <div class="table-responsive" style="max-width: auto;overflow: auto; width: auto;"> 
+                                <!-- <div class="table-responsive">  -->
                                     <!-- <table class="table table-striped table-hover custom-table"> -->
-                                    <table class="table custom-table">
+                                    <!-- <table class="table table-responsive custom-table"> -->
+                                        <table class="table custom-table">
                                         <thead>
                                         <tr>
-                                            <th scope="col">
-                                                <span>Date</span>
-                                            </th>
-                                            <th scope="col">
-                                                <span>Tally No</span>
-                                            </th>
-                                            <th scope="col">
-                                                <span>Lorry No</span>
-                                            </th>
-                                            <th scope="col">
-                                                <span>Actions</span>
-                                            </th>
+                                            <th *ngIf="btn=='TS'" scope="col"><span>Date</span></th>
+                                            <th *ngIf="btn=='TS'" scope="col"><span>Tally No</span></th>
+                                            <th *ngIf="btn=='TS'" scope="col"><span>Lorry No</span></th>
+
+                                            <th *ngIf="btn=='CR'||btn=='TN'" scope="col"><span>SCN</span></th>
+                                            <th *ngIf="btn=='CR'||btn=='TN'" scope="col"><span>WPE No</span></th>
+                                            <th *ngIf="btn=='CR'" scope="col"><span>DO No</span></th>
+
+                                            <th *ngIf="btn=='TN'" scope="col"><span>TN No</span></th>
+
+                                            <th scope="col"><span>Actions</span></th>
                                         </tr>
                                         </thead>
                                         <tbody class="table-f-color">
-                                        <tr *ngFor="let row of data">
-                                            <td>{{row.date}}</td>
-                                            <td>{{row.tallyNo}}</td>
-                                            <td>{{row.lorryNo}}</td>
+                                        <!-- <tr *ngFor="let row of data" [ngClass]="{'bg-green': row?.status=='pending','bg-yellow': row?.status=='completed'}"> -->
+                                          <tr *ngFor="let row of data">
+                                            <td *ngIf="btn=='TS'">{{row.date}}</td>
+                                            <td *ngIf="btn=='TS'" class="txt-trunc">
+                                                <span *ngIf="row?.status=='pending'" class="status-circle status-yellow"></span>
+                                                <span *ngIf="row?.status=='completed'" class="status-circle status-green"></span>
+                                                {{row.tallyNo}}
+                                            </td>
+                                            <td *ngIf="btn=='TS'" class="txt-trunc">{{row.lorryNo}}</td>
+
+                                            <td *ngIf="btn=='CR'||btn=='TN'" class="txt-trunc">{{row.SCN}}</td>
+                                            <td *ngIf="btn=='CR'||btn=='TN'" class="txt-trunc">{{row.WPENo}}</td>
+                                            <td *ngIf="btn=='CR'" class="txt-trunc">{{row.DONo}}</td>
+
+                                            <td *ngIf="btn=='TN'" class="txt-trunc">{{row.TNNo}}</td>
                                             <td>
-                                                <span class="pr-3 hand" data-toggle="tooltip" data-placement="top" title="Edit"><i (click)="edit()" class="fa fa-pencil" aria-hidden="true"></i></span>
-                                                <span class="hand" data-toggle="tooltip" data-placement="top" title="Approve"><i (click)="approve(row.id)" class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                                                <span class="pr-2 hand" data-toggle="tooltip" data-placement="top" title="Edit"><i (click)="edit()" class="fa fa-pencil" aria-hidden="true"></i></span>
+                                                <span class="pr-2 hand" data-toggle="tooltip" data-placement="top" title="Approve"><i (click)="approve(row.id)" class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                                                <!-- <span *ngIf="btn=='TN'" class="hand" data-toggle="tooltip" data-placement="top" title="Approve"><i (click)="goToTS()" class="fa fa-list-alt" aria-hidden="true"></i></span> -->
                                             </td>
                                         </tr>
-                                        <!-- <tr>
-                                            <td>14/12</td>
-                                            <td>D589107</td>
-                                            <td>VCA123</td>
-                                            <td>
-                                                <span class="pr-3 hand" (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                                                <span class="hand"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>14/12</td>
-                                            <td>B589106</td>
-                                            <td>VCA123</td>
-                                            <td>
-                                                <span class="pr-3 hand" (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                                                <span class="hand"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>14/12</td>
-                                            <td>B589107</td>
-                                            <td>ABC7321</td>
-                                            <td>
-                                                <span class="pr-3 hand" (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                                                <span class="hand"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-                                            </td>
-                                        </tr> -->
-                                        <!-- <tr>
-                                            <td>14/12</td>
-                                            <td>C591982</td>
-                                            <td>CEF7321</td>
-                                            <td>
-                                                <span class="pr-3 hand" (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                                                <span class="hand"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-                                            </td> -->
-                                            <!-- <td>
-                                                <button type="button" class="btn btn-primary1 f-white"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                                <button type="button" class="btn btn-primary1 f-white"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
-                                            </td> -->
-                                        <!-- </tr> -->
                                         </tbody>
                                     </table> 
-                                </div> 
+                                <!-- </div>  -->
                                     <!-- <div class="row mt-5" style="justify-content: center;">
                                         <div class="col-6">
                                             <button type="submit" class="btn btn-primary" style="width: 100%;" routerLinkActive="active" routerLink="/addWpImport">Back</button>
@@ -110,7 +89,7 @@
 
                                     <div class="row notShowBtn mt-2 mb-2" style="justify-content: center;">
                                         <div class="col-6">
-                                            <button type="button" class="btn btn-primary" style="width: 100%;" routerLinkActive="active" routerLink="/core/wpImport">Add</button>
+                                            <button type="button" class="btn btn-primary" style="width: 100%;" (click)="add()">Add</button>
                                         </div>
                                     </div>   
                                     
