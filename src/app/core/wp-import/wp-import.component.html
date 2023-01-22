@@ -11,23 +11,33 @@
                 
                 <!-- <h3 class=" custom-title" style="font-family: 'Cedarville Cursive'">TALLY APP</h3> -->
 
-                <div *ngIf="btn=='TS'" class="row">
-                    <i style="color: #5126ec;padding-right: 35px;padding-left: 15px;margin-top: 10px;" routerLinkActive="active" routerLink="/selectOption" class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
-                    <h3  class="custom-title" style="justify-content: center;font-family: 'Cedarville Cursive'">TALLY SHEET</h3>
+                <div *ngIf="btn=='TS'"  style="margin-bottom: -8px;display: flex;align-items: center; justify-content: space-between; ">
+                    <i style="color: #5126ec;margin-bottom: 4px;" routerLinkActive="active" routerLink="/selectOption" class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
+                   <div style="text-align: center;"> <h3  class="custom-title" style="justify-content: center;font-family: 'Cedarville Cursive'">TALLY SHEET</h3>
+                    <div *ngIf="mode=='edit'&& btn=='TS'" style="font-weight: 400;background-color: #5126ec;" class="badge badge-pill badge-secondary">Tally No : {{tallyNo}}</div>
+                    </div>
+                    <div></div>
                 </div>
-                <div *ngIf="btn=='CR'" class="row">
-                    <i style="color: #5126ec;padding-right: 9px;padding-left: 15px;margin-top: 10px;" routerLinkActive="active" routerLink="/selectOption" class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
-                    <h4   class="custom-title" style="justify-content: center;font-family: 'Cedarville Cursive'">CARGO RECEIVER</h4>
+                <div *ngIf="btn=='CR'" style="margin-bottom: -8px;display: flex;align-items: center; justify-content: space-between;">
+                    <i style="color: #5126ec;margin-bottom: 4px;" routerLinkActive="active" routerLink="/selectOption" class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
+                  <div style="text-align: center;">  <h4   class="custom-title" style="justify-content: center;font-family: 'Cedarville Cursive'">CARGO RECEIVER</h4>
+                    <div *ngIf="mode=='edit'&& btn=='CR'" style="font-weight: 400;background-color: #5126ec;" class="badge badge-pill badge-secondary">DO No : {{DONo}}</div>
+                    </div>
+                    <div></div>
                 </div>
-                <div *ngIf="btn=='TN'" class="row">
-                    <i style="color: #5126ec;padding-right: 20px;padding-left: 15px;margin-top: 10px;" routerLinkActive="active" routerLink="/selectOption" class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
+                <div *ngIf="btn=='TN'" style="margin-bottom: -8px;display: flex;align-items: center; justify-content: space-between;">
+                    <i style="color: #5126ec;margin-bottom: 4px;" routerLinkActive="active" routerLink="/selectOption" class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
+                    <div style="text-align: center;"> 
                     <h3 class="custom-title" style="justify-content: center;font-family: 'Cedarville Cursive'">TRANSFER NOTE</h3>
+                    <div *ngIf="mode=='edit'&& btn=='TN'" style="font-weight: 400;background-color: #5126ec;" class="badge badge-pill badge-secondary">TN No : {{TNNo}}</div>
                 </div>
-
+                    <div></div>
+                </div>
+              <!-- <div style="text-align: center;">
                 <span *ngIf="mode=='edit'&& btn=='TS'" style="font-weight: 400;background-color: #5126ec;" class="badge badge-pill badge-secondary">Tally No : {{tallyNo}}</span>
                 <span *ngIf="mode=='edit'&& btn=='CR'" style="font-weight: 400;background-color: #5126ec;" class="badge badge-pill badge-secondary">DO No : {{DONo}}</span>
                 <span *ngIf="mode=='edit'&& btn=='TN'" style="font-weight: 400;background-color: #5126ec;" class="badge badge-pill badge-secondary">TN No : {{TNNo}}</span>
-
+            </div> -->
                 <!-- <div class="row" style="justify-content: right;padding-right: 1rem !important;margin-top: -35px;">
                     <img  style="width: 22px;height: 22px;" routerLinkActive="active" routerLink="/logout" src="assets/css/images/logout3-removebg.png" class="image logo">
                 </div> -->

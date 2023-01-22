@@ -28,6 +28,12 @@
     .icon-bg .material-icons,.icon-bg .material-icons-outlined{margin-top: 4px;color: #fff;
       font-size: 30px;}
     .arrow-icon .material-icons{color: #adb5bd;}
+    @media only screen and (min-device-width: 480px) 
+                   and (max-device-width: 640px) 
+                   and (orientation: landscape) {
+
+
+}
   /* desktop */
   @media only screen and (min-width: 415px) {
     .loginbox {

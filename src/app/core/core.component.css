@@ -1,5 +1,5 @@
   /* desktop */
-@media only screen and (min-width: 415px) {
+@media only screen and (min-width: 916px) {
     .notShow{
       display: none;
     }
@@ -9,7 +9,8 @@
     border-top: 1px solid #f2f2f2;box-shadow: rgb(0 0 0 / 13%) 0px 3px 16px;}
 .footer-icons .btn{color: #5126ec;font-size: 18px;}
 .footer-icons .btn1:hover,.bg-color-blue {
-    background: linear-gradient(78deg, rgba(81,38,236,1) 0%, rgb(152 116 240) 47%, #d598d3 100%) !important;
+    background: rgba(81,38,236,1)  !important;
+    /* background: linear-gradient(78deg, rgba(81,38,236,1) 0%, rgb(152 116 240) 47%, #d598d3 100%) !important; */
     color: white !important;border-radius: 10px;
 }
 

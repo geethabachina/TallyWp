@@ -94,7 +94,7 @@ color: #ced4da(9, 40%, 60%);
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
-@media only screen and (min-width: 415px) {
+@media only screen and (min-width: 916px) {
   .loginbox {
     background: #f8f9fa;
     border-radius: 30px;

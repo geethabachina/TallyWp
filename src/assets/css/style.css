@@ -70,7 +70,8 @@ body{font-family: 'Poppins', sans-serif !important;scrollbar-width: thin;}
 body.small-menu .left-menu ul li a i, body.small-menu .third-level ul li a i{margin-right: 0 !important;}
 .btn-custom{width: 100px;}
 .btn + .btn{margin-left: 10px;}
-.btn-primary{background-image: linear-gradient(90deg, rgba(81,38,236,1) 0%, rgb(152 116 240) 47%, #d598d3 100%) !important;
+.btn-primary{ background: rgba(81,38,236,1) !important;
+  /* background-image: linear-gradient(90deg, rgba(81,38,236,1) 0%, rgb(152 116 240) 47%, #d598d3 100%) !important; */
   background-color: transparent;border: none;border-radius: 20px;
 }
 /* .btn-primary{background-image: linear-gradient(45deg, rgba(12, 93, 244, 1), rgba(12, 93, 244, 0.65));
@@ -184,7 +185,7 @@ body.small-menu .left-menu ul li a i, body.small-menu .third-level ul li a i{mar
 ::placeholder { color: #fff !important; opacity: 0.5;}
 .bg-login.custom-bg{background: #f8f9fa !important;}
 .custom-title{color: #5126ec;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 600;
 }
 .pb-2{padding-bottom: 2rem !important;}
@@ -198,4 +199,11 @@ body.small-menu .left-menu ul li a i, body.small-menu .third-level ul li a i{mar
   background-color: #e9ecef !important;
   opacity: 1;
  }
+ @media only screen and (max-width: 280px) {
+  .custom-title {font-size: 18px;margin-bottom: 0 !important;}
+ }
+ @media only screen and (min-device-width: 412px) and (max-device-width: 915px) and (orientation: landscape) {
+
+
+}
 

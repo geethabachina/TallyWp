@@ -218,4 +218,16 @@
 .bg-yellow{
   background-color: yellow;
 } */
+@media only screen and (min-device-width: 412px) and (max-device-width: 915px) and (orientation: landscape) {
+
+  .form-signin1{
+    max-width: 830px;
+    /* padding-right: 30px;
+    padding-left: 30px; */
+    padding-right: 20px;
+    padding-left: 20px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
 
