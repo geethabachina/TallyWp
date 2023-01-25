@@ -14,9 +14,13 @@ body{font-family: 'Poppins', sans-serif !important;scrollbar-width: thin;}
 .small-menu .left-menu ul li a span{display: none;}
 .small-menu .left-menu ul li a{text-align: center;}
 .small-menu .left-menu ul li a.collapsed::after{content: none !important;}
-::-webkit-scrollbar {width: 10px;height: 10px;}
+::-webkit-scrollbar {width: 4px;height: 4px;}
 ::-webkit-scrollbar-track {background: #f1f1f1;}
-::-webkit-scrollbar-thumb {background: linear-gradient(45deg, rgba(81,38,236,1) 0%, rgb(152 116 240) 47%, #d598d3 100%) !important}
+::-webkit-scrollbar-thumb {
+  /* background: linear-gradient(45deg, rgba(81,38,236,1) 0%, rgb(152 116 240) 47%, #d598d3 100%) !important */
+  background: linear-gradient(45deg, rgba(81,38,236,1) 0%, rgb(81,38,236,1) 47%, #5126ec 100%) !important
+  /* background: rgba(81,38,236,1) !important; */
+}
 ::-webkit-scrollbar-thumb:hover {background: linear-gradient(45deg, rgba(81,38,236,1) 0%, rgb(152 116 240) 47%, #d598d3 100%) !important;}
 .alert {color: #dc3545;padding-top: 0px!important;margin-bottom: -35px;font-size: 10px;margin-right: -20px;text-align: right;font-weight: 600;}
 .hand{cursor: pointer;}
@@ -199,9 +203,9 @@ body.small-menu .left-menu ul li a i, body.small-menu .third-level ul li a i{mar
   background-color: #e9ecef !important;
   opacity: 1;
  }
- @media only screen and (max-width: 280px) {
-  .custom-title {font-size: 18px;margin-bottom: 0 !important;}
- }
+ /* @media only screen and (max-width: 280px) {
+  .custom-title {font-size: 22px;margin-bottom: 0 !important;}
+ } */
  @media only screen and (min-device-width: 412px) and (max-device-width: 915px) and (orientation: landscape) {
 
 

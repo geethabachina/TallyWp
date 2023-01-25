@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as _ from 'lodash';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { IfStmt } from '@angular/compiler';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class WpImportComponent implements OnInit {
   cargoName: any;
   quantity: any;
   pieces: any;
-  hatch: any;
+  hatch: any = null;
   lorryNo: any;
   location: any = null;
   containerNo: any;
@@ -54,6 +55,7 @@ export class WpImportComponent implements OnInit {
  TNNo: any;  
  importExportType: any;
  endTimeExist: boolean = false;//edit- have endTime should not edit any fields in TS.
+ status: any;
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -67,7 +69,7 @@ export class WpImportComponent implements OnInit {
         blNo: [null],
         quantity: ['', Validators.required],
         location: ['', Validators.required],
-        lorryNo: ['', Validators.required],
+        lorryNo: [null],
         resources: [null],
        // scn: [null],
        // blNo: [null]
@@ -78,9 +80,19 @@ export class WpImportComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.mode = params['mode'];
       this.btn = params['btn'];//TS,CR,TN
+      this.status = params['status'];//TS,CR,TN
       //this.comeFrom = params['comeFrom'];//TN
       if(this.mode=='edit'){
         this.edit();
+        if(this.status=='completed'){
+          this.endTimeExist = true;
+          this.endTime = "03:09 PM";
+          this.importForm.controls['scn'].disable();
+          this.importForm.controls['quantity'].disable();
+          this.importForm.controls['resources'].disable();
+          this.importForm.controls['location'].disable();
+          this.importForm.controls['lorryNo'].disable();
+        }
       }else{//add
         var date = new Date();
         this.startTime = date.toTimeString().substring(0,5);
@@ -108,7 +120,7 @@ export class WpImportComponent implements OnInit {
     this.modeValue = "EXPORT";
     this.document = 'WPE185534';
     this.scnChanged(this.scn);
-    // this.startTime = "12:49 PM"
+    this.startTime = "12:49 PM";
   }
 
   scnChanged(scn:any){
@@ -182,7 +194,13 @@ export class WpImportComponent implements OnInit {
       return false;
     }
     //this.spinner.show();
-    this.toastr.success('', 'Tally No "A589106" Saved successfully');
+    if(this.btn=='TS'){
+      this.toastr.success('', 'Tally No "A589106" Saved successfully');
+    }else if(this.btn=='CR'){
+      this.toastr.success('', 'DO No "VH/0119" Saved successfully');
+    }else{
+      this.toastr.success('', 'TN No "TN016659" Saved successfully');
+    }
     // this.router.navigate(['wpApprove']);
     this.router.navigate(['/core/wpApprove'], { queryParams: { btn:this.btn}});
   }
@@ -191,7 +209,13 @@ export class WpImportComponent implements OnInit {
     this.endTimeExist = true;
     var date = new Date();
     this.endTime = date.toTimeString().substring(0,5);
-    this.toastr.success('', 'Tally No "A589106" Saved successfully');
+    if(this.btn=='TS'){
+      this.toastr.success('', 'Tally No "A589106" Saved successfully');
+    }else if(this.btn=='CR'){
+      this.toastr.success('', 'DO No "VH/0119" Saved successfully');
+    }else{
+      this.toastr.success('', 'TN No "TN016659" Saved successfully');
+    }
     this.router.navigate(['/core/wpApprove'], { queryParams: { btn:this.btn}});
   }
 

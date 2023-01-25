@@ -89,7 +89,7 @@ color: #ced4da(9, 40%, 60%);
     border: 1px solid #fff !important;
 }
 ::placeholder { color: #fff !important; opacity: 0.5;}
-.custom-btn{border-radius: 20px;background: linear-gradient(90deg, rgba(81,38,236,1) 0%, rgb(152 116 240) 47%, #d598d3 100%) !important}
+/* .custom-btn{border-radius: 20px;background: linear-gradient(90deg, rgba(81,38,236,1) 0%, rgb(152 116 240) 47%, #d598d3 100%) !important} */
 .btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -120,8 +120,8 @@ color: #ced4da(9, 40%, 60%);
 
 .form-signin1{
   max-width: 530px;
-  padding-right: 50px;
-  padding-left: 50px;
+  padding-right: 45px;
+  padding-left: 45px;
   margin: 0 auto;
   text-align: center;
 }
@@ -140,7 +140,7 @@ color: #ced4da(9, 40%, 60%);
 
 .subtitle1 {
 color: black;
-margin-top: 4vh;
+margin-top: 3vh;
 font-size: 12px;
 /* padding-left: 27px;
 padding-right: 53px; */

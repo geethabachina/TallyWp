@@ -5,11 +5,11 @@
   <div class="notShow bgcolor footer-menu ">
         <div class="d-flex justify-content-around footer-icons">
             <!-- <button class="btn btn1"><i routerLinkActive="active" routerLink="/selectOption" class="fa fa-arrow-left fa-lg"></i></button> -->
-            <button class="btn btn1" id="list"><i (click)="listView()" class="fa fa-list fa-lg"></i></button>
-            <button *ngIf="btnType!='TS'" class="btn btn1" id="add"><i (click)="addView()" class="fa fa-plus fa-lg"></i></button>
-            <button *ngIf="btnType=='TS'" class="btn btn1" id="add"><i data-toggle="modal" data-target="#exampleModal" class="fa fa-plus fa-lg"></i></button>
+            <button class="btn btn1" id="list" (click)="listView()"><i class="fa fa-list fa-lg"></i></button>
+            <button *ngIf="btnType!='TS'" class="btn btn1" id="add" (click)="addView()"><i class="fa fa-plus fa-lg"></i></button>
+            <button *ngIf="btnType=='TS'" class="btn btn1" id="add" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus fa-lg"></i></button>
             <!-- <span style="padding-left: 15px"><i data-toggle="modal" data-target="#exampleModal" class="fa fa-trash-o hand mr-3"></i></span> -->
-            <button class="btn btn1"><i routerLinkActive="active" routerLink="/logout" class="fa fa-sign-out fa-lg"></i></button>
+            <button class="btn btn1" routerLinkActive="active" routerLink="/logout"><i class="fa fa-sign-out fa-lg"></i></button>
         </div>
     </div> 
 </div>

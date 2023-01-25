@@ -129,7 +129,8 @@
   .bg-login{
     background-image:linear-gradient(#00477a,rgb(4 72 96 / 74%));
     height: 100%;
-    width: 100%;
+    width: 101%;
+    /* width: 100%; */
     position: fixed;
   }
   /* .labelStyle{

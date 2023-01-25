@@ -196,7 +196,9 @@
 
 .custom-btn1{
   border-radius: 20px;
-  background: rgba(81,38,236,1) !important
+  /* background: rgba(81,38,236,1) !important */
+  /* background: #777 !important; */
+  background: #d9534f !important;
 }
 
 
