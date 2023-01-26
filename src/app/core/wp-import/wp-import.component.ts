@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IfStmt } from '@angular/compiler';
+import { DashboardService } from 'src/app/services/dashboard.service';
 
 
 @Component({
@@ -62,6 +63,7 @@ export class WpImportComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private spinner : NgxSpinnerService,
+    private dashboardService : DashboardService,
     ) {
       this.importForm = this.formBuilder.group({
         scn: ['', Validators.required],
@@ -202,6 +204,7 @@ export class WpImportComponent implements OnInit {
       this.toastr.success('', 'TN No "TN016659" Saved successfully');
     }
     // this.router.navigate(['wpApprove']);
+    this.dashboardService.setListBtnBg();
     this.router.navigate(['/core/wpApprove'], { queryParams: { btn:this.btn}});
   }
 
@@ -216,6 +219,7 @@ export class WpImportComponent implements OnInit {
     }else{
       this.toastr.success('', 'TN No "TN016659" Saved successfully');
     }
+    this.dashboardService.setListBtnBg();
     this.router.navigate(['/core/wpApprove'], { queryParams: { btn:this.btn}});
   }
 

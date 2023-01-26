@@ -21,6 +21,8 @@ export class CoreComponent implements OnInit {
     this.refresh = this.dashboardService.refreshListBtnBg$.subscribe(() => {
       var element1 = document.getElementById("list");
       element1?.classList.add("bg-color-blue");
+      var element2 = document.getElementById("add");
+      element2?.classList.remove("bg-color-blue");
     });
     this.refresh1 = this.dashboardService.refreshAddBtnBg$.subscribe(() => {
       var element1 = document.getElementById("list");
