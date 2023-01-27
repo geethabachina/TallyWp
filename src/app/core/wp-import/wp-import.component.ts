@@ -54,7 +54,7 @@ export class WpImportComponent implements OnInit {
  tallyNo: any;
  DONo: any;
  TNNo: any;  
- importExportType: any;
+ //importExportType: any;
  endTimeExist: boolean = false;//edit- have endTime should not edit any fields in TS.
  status: any;
 
@@ -120,7 +120,7 @@ export class WpImportComponent implements OnInit {
     this.containerNo = '' ;
     this.remarks = '' ;
     this.modeValue = "EXPORT";
-    this.document = 'WPE185534';
+    this.document = 'import';
     this.scnChanged(this.scn);
     this.startTime = "12:49 PM";
   }
@@ -151,20 +151,21 @@ export class WpImportComponent implements OnInit {
   }
 
 
-  importChanged(importNo:any){
-    var index1 = _.findIndex(this.blList, (row:any) => {
-      return row.val == importNo;
-    });
-    if(index1 > -1) {
-      this.blNo = this.blList[index1].blNo;
-      this.cargoName = this.blList[index1].cargoName;
-      this.importExportType = this.blList[index1].type
-      //this.blNoChanged(this.blNo);
-    }
-    else{
-      this.blNo = '';
-    }
-  }
+  // importChanged(importNo:any){
+  //   var index1 = _.findIndex(this.blList, (row:any) => {
+  //     return row.val == importNo;
+  //   });
+  //   if(index1 > -1) {
+  //     this.blNo = this.blList[index1].blNo;
+  //     this.cargoName = this.blList[index1].cargoName;
+  //     this.importExportType = this.blList[index1].type
+  //   }
+  //   else{
+  //     this.blNo = '';
+  //   }
+  // }
+
+ 
 
   // blNoChanged(blNo:any){
   //   var index = _.findIndex(this.data1, (row:any) => {

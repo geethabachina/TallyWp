@@ -67,9 +67,14 @@
                                     </div>
                                     <div *ngIf="btn=='TS'" class="col-6">
                                         <label class="label-style table-f-color">Import/Export</label>
-                                        <select class="form-control custom-form" [(ngModel)]="document" [disabled]="endTimeExist" (change)="importChanged(document)" [ngModelOptions]="{standalone: true}">
+                                        <!-- <select class="form-control custom-form" [(ngModel)]="document" [disabled]="endTimeExist" (change)="importChanged(document)" [ngModelOptions]="{standalone: true}">
                                             <option value=null>Select</option>
                                             <option *ngFor="let row of blList" [ngValue]="row.val" >{{row?.val}}</option>
+                                        </select> -->
+                                        <select class="form-control custom-form" [(ngModel)]="document" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}">
+                                            <option value=null>Select</option>
+                                            <option value="import">Import</option>
+                                            <option value="export">Export</option>
                                         </select>
                                     </div>
                                     <div *ngIf="btn=='CR'" class="col-6">
@@ -113,25 +118,39 @@
                                     </div>
                                 </div>
 
-                                <div *ngIf="btn=='TS'" class="row mb-2">
-                                    <div *ngIf="importExportType=='export'" class="col-6">
+                                <div *ngIf="btn=='TS'&&document=='export'" class="row mb-2">
+                                    <div class="col-12">
                                         <label class="label-style table-f-color">TN No</label>
                                         <select class="form-control custom-form" [(ngModel)]="modeValue" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}">
                                             <option value=null>Select TN No</option>
-                                            <option value="TN No">TN No</option>
-                                            <option value="TN No2">TN No2</option>
+                                            <option value="TN016730">TN016730</option>
+                                            <option value="TN016729">TN016729</option>
+                                            <option value="TN016728">TN016728</option>
+                                            <option value="TN016727">TN016727</option>
+                                            <option value="TN016726">TN016726</option>
+                                            <option value="TN016721">TN016721</option>
                                         </select>
                                     </div>
-                                    <div class="col-6">
-                                        <label *ngIf="importExportType=='export'" class="label-style table-f-color">ISD No</label>
-                                        <input *ngIf="importExportType=='export'" type="text" class="form-control custom-form" [(ngModel)]="blNo" [ngModelOptions]="{standalone: true}" placeholder="ISD No" disabled>
-                                    </div>
+                                    <!-- <div class="col-6">
+                                        <label *ngIf="document=='export'" class="label-style table-f-color">ISD No</label>
+                                        <input *ngIf="document=='export'" type="text" class="form-control custom-form" [(ngModel)]="blNo" [ngModelOptions]="{standalone: true}" placeholder="ISD No" disabled>
+                                    </div> -->
                                 </div>
 
-                                <div *ngIf="btn=='TS'" class="row mb-2">
+                                <div *ngIf="btn=='TS'&&document=='import'" class="row mb-2">
                                     <div class="col-12">
-                                        <label *ngIf="importExportType=='import'" class="label-style table-f-color">B/L No</label>
-                                        <input *ngIf="importExportType=='import'" type="text" class="form-control custom-form" [(ngModel)]="blNo" [ngModelOptions]="{standalone: true}" placeholder="B/L No" disabled>
+                                        <label class="label-style table-f-color">B/L No</label>
+                                        <!-- <input type="text" class="form-control custom-form" [(ngModel)]="blNo" [ngModelOptions]="{standalone: true}" placeholder="B/L No" disabled> -->
+                                        <select class="form-control custom-form" [(ngModel)]="blNo" [ngModelOptions]="{standalone: true}">
+                                            <option value=null>Select B/L No</option>
+                                            <option value="SC2300337I">SC2300337I</option>
+                                            <option value="RM20223DUMPKL01">RM20223DUMPKL01</option>
+                                            <option value="YS9002">YS9002</option>
+                                            <option value="KKLUTH0918980">KKLUTH0918980</option>
+                                            <option value="LCPKT8838T">LCPKT8838T</option>
+                                            <option value="SC2300252I">SC2300252I</option>
+                                            <option value="NYKS200007092">NYKS200007092</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -268,13 +287,15 @@
 
                                 <div *ngIf="(mode=='add'&&btn=='TS')||((mode=='edit'&&btn=='TS'&&status=='completed'))||btn=='CR'||btn=='TN'" class="row mt-2 mb-5" style="justify-content: center;">
                                     <div class="col-12">
-                                        <button type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save()">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                                        <button *ngIf="mode=='add'" type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save()">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                                        <button *ngIf="mode=='edit'" type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save()">Update <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
                                     </div>
                                 </div>   
 
                                 <div *ngIf="mode=='edit'&&btn=='TS'&&status=='pending'" class="row mt-2 mb-5" style="justify-content: center;">
                                     <div class="col-6">
-                                        <button type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save()">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                                        <button *ngIf="mode=='add'" type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save()">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                                        <button *ngIf="mode=='edit'" type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save()">Update <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
                                     </div>
                                     <div class="col-6">
                                         <button type="button" class="btn btn-primary custom-btn1" style="width: 100%;" (click)="end()">End <i class="fa fa-ban" aria-hidden="true"></i></button>
