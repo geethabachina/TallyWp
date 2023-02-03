@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DashboardService } from '../services/dashboard.service';
+import { ModalServiceService } from '../shared/services/modal-service/modal-service.service';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class CoreComponent implements OnInit {
   constructor(
     private router: Router,
     private dashboardService : DashboardService,
+    private modalService2: ModalServiceService,
   ) {
     this.refresh = this.dashboardService.refreshListBtnBg$.subscribe(() => {
       var element1 = document.getElementById("list");
@@ -34,6 +36,11 @@ export class CoreComponent implements OnInit {
 
   ngOnInit(): void {
     this.btnType = localStorage.getItem('btnType');
+  }
+
+  logout(){
+    var data = {btn:this.btnType}
+    this.modalService2.openModal('logout', data);
   }
 
   listView(){

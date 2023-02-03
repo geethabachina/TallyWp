@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IfStmt } from '@angular/compiler';
 import { DashboardService } from 'src/app/services/dashboard.service';
-
+import { ModalServiceService } from 'src/app/shared/services/modal-service/modal-service.service';
 
 @Component({
   selector: 'app-wp-import',
@@ -19,7 +19,7 @@ export class WpImportComponent implements OnInit {
   blNo: any = null;
   selectedData: any = {};
   mode: any;
-  cargoName: any;
+  cargoName: any = null;
   quantity: any;
   pieces: any;
   hatch: any = null;
@@ -31,6 +31,10 @@ export class WpImportComponent implements OnInit {
   startTime: any;
   endTime: any;
   weight: any = "0.00";
+  createdDate: any = "05/02/2023";
+  modifiedDate: any = "05/02/2023";
+  totalQuantity: any;
+  balanceQuantity: any;
   data: any = [
     {id:'1',scn:'22OCFF',date:'14/12/2023',berthNo:'B04',shipName:'JASA MURNI'},
     {id:'2',scn:'22NCEP',date:'14/12/2023',berthNo:'B05',shipName:'JOSCO TAIZHOU'},
@@ -64,6 +68,7 @@ export class WpImportComponent implements OnInit {
     private toastr: ToastrService,
     private spinner : NgxSpinnerService,
     private dashboardService : DashboardService,
+    private modalService2: ModalServiceService,
     ) {
       this.importForm = this.formBuilder.group({
         scn: ['', Validators.required],
@@ -179,7 +184,7 @@ export class WpImportComponent implements OnInit {
   //   }
   // }
 
-  save(){
+  save(type: any){
     //this.submitTouched = true;
     // if(this.newGroup.type == 'Job Order'){
     //   this.addGroupForm.controls['user'].setValidators([Validators.required]);
@@ -196,32 +201,35 @@ export class WpImportComponent implements OnInit {
       //this.submitTouched = false;
       return false;
     }
+    var data = {btn:this.btn}
     //this.spinner.show();
-    if(this.btn=='TS'){
-      this.toastr.success('', 'Tally No "A589106" Saved successfully');
-    }else if(this.btn=='CR'){
-      this.toastr.success('', 'DO No "VH/0119" Saved successfully');
-    }else{
-      this.toastr.success('', 'TN No "TN016659" Saved successfully');
-    }
-    // this.router.navigate(['wpApprove']);
-    this.dashboardService.setListBtnBg();
-    this.router.navigate(['/core/wpApprove'], { queryParams: { btn:this.btn}});
+    this.modalService2.openModal(type, data);
+    // if(this.btn=='TS'){
+    //   this.toastr.success('', 'Tally No "A589106" Saved successfully');
+    // }else if(this.btn=='CR'){
+    //   this.toastr.success('', 'DO No "VH/0119" Saved successfully');
+    // }else{
+    //   this.toastr.success('', 'TN No "TN016659" Saved successfully');
+    // }
+    // this.dashboardService.setListBtnBg();
+    // this.router.navigate(['/core/wpApprove'], { queryParams: { btn:this.btn}});
   }
 
   end(){
     this.endTimeExist = true;
     var date = new Date();
     this.endTime = date.toTimeString().substring(0,5);
-    if(this.btn=='TS'){
-      this.toastr.success('', 'Tally No "A589106" Saved successfully');
-    }else if(this.btn=='CR'){
-      this.toastr.success('', 'DO No "VH/0119" Saved successfully');
-    }else{
-      this.toastr.success('', 'TN No "TN016659" Saved successfully');
-    }
-    this.dashboardService.setListBtnBg();
-    this.router.navigate(['/core/wpApprove'], { queryParams: { btn:this.btn}});
+    var data = {btn:this.btn}
+    this.modalService2.openModal("end", data);
+    // if(this.btn=='TS'){
+    //   this.toastr.success('', 'Tally No "A589106" Saved successfully');
+    // }else if(this.btn=='CR'){
+    //   this.toastr.success('', 'DO No "VH/0119" Saved successfully');
+    // }else{
+    //   this.toastr.success('', 'TN No "TN016659" Saved successfully');
+    // }
+    // this.dashboardService.setListBtnBg();
+    // this.router.navigate(['/core/wpApprove'], { queryParams: { btn:this.btn}});
   }
 
   reset(){

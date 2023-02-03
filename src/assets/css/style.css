@@ -43,7 +43,7 @@ body{font-family: 'Poppins', sans-serif !important;scrollbar-width: thin;}
   vertical-align: middle;
   border-top: none;
 }
-.common-table table tr td, .common-table table tr th{font-size: 13px;padding:6px 12px;border-collapse: collapse;}
+/* .common-table table tr td, .common-table table tr th{font-size: 13px;padding:6px 12px;border-collapse: collapse;} */
 /* .common-table table tr th:last-child{border-top-right-radius: 6px;}
 .common-table table tr th:first-child{border-top-left-radius: 6px;} */
 /* .common-table table tbody tr:last-child td:first-child{border-bottom-left-radius: 6px;}

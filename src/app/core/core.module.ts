@@ -9,6 +9,7 @@ import { WpImportComponent } from './wp-import/wp-import.component';
 import { AddWpImportComponent } from './add-wp-import/add-wp-import.component';
 import { WpApproveComponent } from './wp-approve/wp-approve.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ModalPopUpComponent } from './modal-pop-up/modal-pop-up.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { LogoutComponent } from './logout/logout.component';
     AddWpImportComponent,
     WpApproveComponent,
     LogoutComponent,
+    ModalPopUpComponent,
   ]
 })
 export class CoreModule { }

@@ -6,7 +6,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [],
@@ -18,6 +18,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     RouterModule,
     BsDatepickerModule.forRoot(),
+    ModalModule.forRoot(),
+
     ToastrModule.forRoot({
       timeOut: 2500,
       positionClass: 'toast-bottom-right',
@@ -30,7 +32,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     NgxSpinnerModule,
     BsDatepickerModule,
-    RouterModule
+    RouterModule,
+    ModalModule
   ]
 })
 export class SharedModule { }

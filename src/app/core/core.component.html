@@ -9,7 +9,8 @@
             <button *ngIf="btnType!='TS'" class="btn btn1" id="add" (click)="addView()"><i class="fa fa-plus fa-lg"></i></button>
             <button *ngIf="btnType=='TS'" class="btn btn1" id="add" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus fa-lg"></i></button>
             <!-- <span style="padding-left: 15px"><i data-toggle="modal" data-target="#exampleModal" class="fa fa-trash-o hand mr-3"></i></span> -->
-            <button class="btn btn1" routerLinkActive="active" routerLink="/logout"><i class="fa fa-sign-out fa-lg"></i></button>
+            <button class="btn btn1" (click)="logout()"><i class="fa fa-sign-out fa-lg"></i></button>
+            <!-- <button class="btn btn1" routerLinkActive="active" routerLink="/logout"><i class="fa fa-sign-out fa-lg"></i></button> -->
         </div>
     </div> 
 </div>

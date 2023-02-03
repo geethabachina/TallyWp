@@ -164,7 +164,26 @@
                                 <div class="row mb-2">
                                     <div class="col-12">
                                         <label class="label-style table-f-color">Cargo Name</label>
-                                        <input type="text" class="form-control custom-form" [(ngModel)]="cargoName" [ngModelOptions]="{standalone: true}" placeholder="Cargo Name" disabled>
+                                        <!-- <input type="text" class="form-control custom-form" [(ngModel)]="cargoName" [ngModelOptions]="{standalone: true}" placeholder="Cargo Name" disabled> -->
+                                        <select class="form-control custom-form" [(ngModel)]="cargoName" [ngModelOptions]="{standalone: true}">
+                                            <option value=null>Select Cargo Name</option>
+                                            <option value="BOAT (RR)">BOAT (RR)</option>
+                                            <option value="COIL (BB)">COIL (BB)</option>
+                                            <option value="BEAM (BB)">BEAM (BB)</option>
+                                            <option value="HELICOPTER (RR)">HELICOPTER (RR)</option>
+                                            <option value="TRUCK(RR)">TRUCK(RR)</option>
+                                            <option value="PIPES - BUNDLE (BB)">PIPES - BUNDLE (BB)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div  class="row mb-2">
+                                    <div  class="col-6">
+                                        <label class="label-style table-f-color">Total Quantity</label>
+                                        <input type="text" class="form-control custom-form" [(ngModel)]="totalQuantity" [disabled]=true [ngModelOptions]="{standalone: true}" placeholder="Total Quantity" >
+                                    </div>
+                                    <div *ngIf="endTimeExist" class="col-6">
+                                        <label class="label-style table-f-color">Balance Quantity</label>
+                                        <input type="text" class="form-control custom-form" [(ngModel)]="balanceQuantity" [disabled]=true [ngModelOptions]="{standalone: true}"  placeholder="Balance Quantity" >
                                     </div>
                                 </div>
 
@@ -275,6 +294,16 @@
                                         <textarea name="remarks" class="form-control custom-form" [(ngModel)]="remarks" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}" rows="2" cols="50" placeholder="Remarks"></textarea>
                                     </div>
                                 </div>
+                                <div *ngIf="mode=='edit'" class="row mb-2">
+                                    <div  class="col-6">
+                                        <label class="label-style table-f-color">Created Date</label>
+                                        <input type="text" class="form-control custom-form" [(ngModel)]="createdDate" [disabled]=true [ngModelOptions]="{standalone: true}" placeholder="Created Date" >
+                                    </div>
+                                    <div *ngIf="endTimeExist" class="col-6">
+                                        <label class="label-style table-f-color">Modified Date</label>
+                                        <input type="text" class="form-control custom-form" [(ngModel)]="modifiedDate" [disabled]=true [ngModelOptions]="{standalone: true}"  placeholder="Modified Date" >
+                                    </div>
+                                </div>
                                <!---------------------------------- buttons--------------------------------- -->
                                 <!-- <div class="row mt-3" style="text-align: center;">
                                     <div class="col-12">
@@ -287,15 +316,15 @@
 
                                 <div *ngIf="(mode=='add'&&btn=='TS')||((mode=='edit'&&btn=='TS'&&status=='completed'))||btn=='CR'||btn=='TN'" class="row mt-2 mb-5" style="justify-content: center;">
                                     <div class="col-12">
-                                        <button *ngIf="mode=='add'" type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save()">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-                                        <button *ngIf="mode=='edit'" type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save()">Update <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                                        <button *ngIf="mode=='add'" type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save('save')">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                                        <button *ngIf="mode=='edit'" type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save('update')">Update <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
                                     </div>
                                 </div>   
 
                                 <div *ngIf="mode=='edit'&&btn=='TS'&&status=='pending'" class="row mt-2 mb-5" style="justify-content: center;">
                                     <div class="col-6">
-                                        <button *ngIf="mode=='add'" type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save()">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-                                        <button *ngIf="mode=='edit'" type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save()">Update <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                                        <button *ngIf="mode=='add'" type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save('save')">Save <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                                        <button *ngIf="mode=='edit'" type="button" class="btn btn-primary custom-btn" style="width: 100%;" (click)="save('update')">Update <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
                                     </div>
                                     <div class="col-6">
                                         <button type="button" class="btn btn-primary custom-btn1" style="width: 100%;" (click)="end()">End <i class="fa fa-ban" aria-hidden="true"></i></button>
@@ -322,6 +351,33 @@
         </form>
     </div>
 </section>
+
+<!----------------------------------------------- delete Modal --------------------------------------------------------------->
+   <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="margin-top:240px">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: #5126ec;font-weight: 600;">TALLY SHEET</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to save ?
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn no-bk mauto d-flex align-items-center px-6" data-dismiss="modal" (click)="yes()">
+            <img class="acc-dec-icon mr-3" src="../../../../assets/css/images/accepted.png" alt="">
+            <p class="mb-0">Yes</p>
+          </button>
+          <button type="button" data-dismiss="modal" aria-label="Close" class="btn no-bk mauto d-flex align-items-center px-6">
+            <img class="acc-dec-icon mr-3" src="../../../../assets/css/images/declined.png" alt="">
+            <p class="mb-0">No</p>
+        </button>
+        </div>
+      </div>
+    </div>
+  </div> -->
 
 
 
