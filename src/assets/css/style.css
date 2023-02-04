@@ -31,6 +31,7 @@ body{font-family: 'Poppins', sans-serif !important;scrollbar-width: thin;}
   border-radius: 6px 6px 0 0;
   color: white;
 }
+.modal-content{margin-top: 240px;}
 .breadcrumb{background: transparent;padding: 0; margin: 0;}
 .breadcrumb .breadcrumb-item{font-size: 14px !important;}
 .common-table table tr th {
@@ -197,8 +198,11 @@ body.small-menu .left-menu ul li a i, body.small-menu .third-level ul li a i{mar
   border: 1px solid #dee2e6;
   font-size: 12px;
   background: #fff;
+  margin-bottom: 0 !important;
   box-shadow: rgb(50 50 105 / 15%) 0px 2px 5px 0px, rgb(0 0 0 / 5%) 0px 1px 1px 0px;
  }
+ .custom-table thead tr{position: sticky;top: 0px;z-index: 100;}
+ .custom-table thead tr th{z-index: 100;}
  .form-control:disabled, .form-control[readonly] {
   background-color: #e9ecef !important;
   opacity: 1;
