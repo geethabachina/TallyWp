@@ -51,6 +51,23 @@
                     <div class="col">
                                 <div class="row mb-2">
                                     <!-- [ngClass]="(btn=='TS'||btn=='TN') ?'col-6':'col-12'" -->
+                                    <!-- <div class="col-6" >
+                                        <label class="label-style required table-f-color">Photo</label>
+                                        <image-upload 
+                                        [url]="uploadUrl"
+                                        partName="file"
+                                        [max]="5"
+                                        buttonCaption="SELECT PHOTO"
+                                        (removed)="onRemoved($event)"
+                                        [extensions]="['jpeg','png','jpg']"
+                                        (uploadFinished)="imageFinishedUploading($event)"
+                                        [maxFileSize]="2097152"
+                                        [fileTooLargeMessage]="'File is bigger than 2MB. Please re-upload with a smaller file size'"
+                                        (uploadStateChanged)="onUploadStateChanged($event)">
+                                        </image-upload> 
+                                    </div> -->
+
+
                                     <div class="col-6" >
                                         <label class="label-style required table-f-color">SCN</label>
                                         <select class="form-control custom-form" [(ngModel)]="scn" (change)="scnChanged(scn)" name="scn" formControlName="scn" [disabled]="endTimeExist" [ngClass]="{ 'is-invalid': importForm.controls['scn'].touched && importForm.controls['scn'].invalid }">
@@ -119,9 +136,9 @@
                                 </div>
 
                                 <div *ngIf="btn=='TS'&&document=='export'" class="row mb-2">
-                                    <div class="col-12">
+                                    <div class="col-6">
                                         <label class="label-style table-f-color">TN No</label>
-                                        <select class="form-control custom-form" [(ngModel)]="modeValue" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}">
+                                        <select class="form-control custom-form" [(ngModel)]="tnNo" (change)="tnNoChange()" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}">
                                             <option value=null>Select TN No</option>
                                             <option value="TN016730">TN016730</option>
                                             <option value="TN016729">TN016729</option>
@@ -131,10 +148,14 @@
                                             <option value="TN016721">TN016721</option>
                                         </select>
                                     </div>
-                                    <!-- <div class="col-6">
-                                        <label *ngIf="document=='export'" class="label-style table-f-color">ISD No</label>
-                                        <input *ngIf="document=='export'" type="text" class="form-control custom-form" [(ngModel)]="blNo" [ngModelOptions]="{standalone: true}" placeholder="ISD No" disabled>
-                                    </div> -->
+                                    <div class="col-6">
+                                        <label class="label-style table-f-color">Export Mode</label>
+                                        <select class="form-control custom-form" [(ngModel)]="exportMode" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}">
+                                            <option value=null>Select Export Mode</option>
+                                            <option value="Direct">Direct</option>
+                                            <option value="Indirect">Indirect</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div *ngIf="btn=='TS'&&document=='import'" class="row mb-2">
@@ -162,7 +183,7 @@
                                 </div>
 
                                 <div class="row mb-2">
-                                    <div class="col-12">
+                                    <div class="col-6">
                                         <label class="label-style table-f-color">Cargo Name</label>
                                         <!-- <input type="text" class="form-control custom-form" [(ngModel)]="cargoName" [ngModelOptions]="{standalone: true}" placeholder="Cargo Name" disabled> -->
                                         <select class="form-control custom-form" [(ngModel)]="cargoName" [ngModelOptions]="{standalone: true}">
@@ -175,13 +196,17 @@
                                             <option value="PIPES - BUNDLE (BB)">PIPES - BUNDLE (BB)</option>
                                         </select>
                                     </div>
+                                    <div class="col-6">
+                                        <label class="label-style table-f-color">Contractor Name</label>
+                                        <input type="text" class="form-control custom-form" [(ngModel)]="contractorName" [ngModelOptions]="{standalone: true}" placeholder="Contractor Name">
+                                    </div>
                                 </div>
                                 <div  class="row mb-2">
                                     <div  class="col-6">
                                         <label class="label-style table-f-color">Total Quantity</label>
                                         <input type="text" class="form-control custom-form" [(ngModel)]="totalQuantity" [disabled]=true [ngModelOptions]="{standalone: true}" placeholder="Total Quantity" >
                                     </div>
-                                    <div *ngIf="endTimeExist" class="col-6">
+                                    <div class="col-6">
                                         <label class="label-style table-f-color">Balance Quantity</label>
                                         <input type="text" class="form-control custom-form" [(ngModel)]="balanceQuantity" [disabled]=true [ngModelOptions]="{standalone: true}"  placeholder="Balance Quantity" >
                                     </div>
@@ -252,8 +277,8 @@
                                             <option value="OWN HANDLING">OWN HANDLING</option>
                                         </select>
                                     </div>
-                                    <div class="col-6">
-                                        <label class="label-style required table-f-color">Location</label>
+                                    <div *ngIf="btn=='TS'&&document=='export'||btn=='CR'||btn=='TN'" class="col-6">
+                                        <label class="label-style table-f-color">Location</label>
                                         <select class="form-control custom-form" [(ngModel)]="location" [disabled]="endTimeExist" name="location" formControlName="location" [ngClass]="{ 'is-invalid': importForm.controls['location'].touched && importForm.controls['location'].invalid }">
                                             <option value=null>Select Location</option>
                                             <option value="FUEL BAY">FUEL BAY</option>
@@ -272,13 +297,13 @@
                                             <div *ngIf="importForm.controls['location'].errors && importForm.controls['location'].errors['required']">is required.</div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row mb-2">
-                                    <div *ngIf="btn=='TS'" class="col-6">
+                                    <div *ngIf="btn=='TS'" class="col-6" [ngClass]="{ 'pt-2': document=='export'}">
                                         <label class="label-style table-f-color">Container No</label>
                                         <input type="text" class="form-control custom-form" [(ngModel)]="containerNo" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}" placeholder="Container No" >
                                     </div>
+                                </div>
+
+                                <div *ngIf="btn=='TN'" class="row mb-2">
                                     <div *ngIf="btn=='TN'" class="col-6">
                                         <label class="label-style required table-f-color">Lorry No</label>
                                         <input type="text" class="form-control custom-form" [(ngModel)]="lorryNo" [disabled]="endTimeExist" name="lorryNo" formControlName="lorryNo" placeholder="Lorry No" [ngClass]="{ 'is-invalid': importForm.controls['lorryNo'].touched && importForm.controls['lorryNo'].invalid }">
@@ -294,13 +319,21 @@
                                         <textarea name="remarks" class="form-control custom-form" [(ngModel)]="remarks" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}" rows="2" cols="50" placeholder="Remarks"></textarea>
                                     </div>
                                 </div>
-                                <div *ngIf="mode=='edit'" class="row mb-2">
-                                    <div  class="col-6">
-                                        <label class="label-style table-f-color">Created Date</label>
-                                        <input type="text" class="form-control custom-form" [(ngModel)]="createdDate" [disabled]=true [ngModelOptions]="{standalone: true}" placeholder="Created Date" >
+                                <div *ngIf="btn=='TS'" class="row mb-2">
+                                    <div class="col-12">
+                                        <label class="label-style table-f-color">WP Remarks</label>
+                                        <textarea name="remarks" class="form-control custom-form" [(ngModel)]="wpRemarks" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}" rows="2" cols="50" placeholder="WP Remarks"></textarea>
                                     </div>
-                                    <div *ngIf="endTimeExist" class="col-6">
-                                        <label class="label-style table-f-color">Modified Date</label>
+                                </div>
+                                <div *ngIf="mode=='edit'" class="row mb-2">
+                                    <div  class="col-12">
+                                        <!-- <label class="label-style table-f-color">Created Date</label> -->
+                                        <input type="text" class="form-control custom-form" [(ngModel)]="createdDate" [disabled]=true [ngModelOptions]="{standalone: true}" placeholder="Created Date" >
+                                    </div> 
+                                </div>
+                                <div *ngIf="mode=='edit'" class="row mb-2">
+                                    <div *ngIf="endTimeExist" class="col-12">
+                                        <!-- <label class="label-style table-f-color">Modified Date</label> -->
                                         <input type="text" class="form-control custom-form" [(ngModel)]="modifiedDate" [disabled]=true [ngModelOptions]="{standalone: true}"  placeholder="Modified Date" >
                                     </div>
                                 </div>

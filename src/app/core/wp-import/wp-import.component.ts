@@ -31,8 +31,8 @@ export class WpImportComponent implements OnInit {
   startTime: any;
   endTime: any;
   weight: any = "0.00";
-  createdDate: any = "05/02/2023";
-  modifiedDate: any = "05/02/2023";
+  createdDate: any = "John created this on 17/02/2023 12:38 PM";
+  modifiedDate: any = "Smith modified this on 17/02/2023 02:13 PM";
   totalQuantity: any;
   balanceQuantity: any;
   data: any = [
@@ -55,12 +55,16 @@ export class WpImportComponent implements OnInit {
  resources: any = null;
  //comeFrom: any = null; 
  modeValue: any = null;  
+ exportMode : any = null;
  tallyNo: any;
  DONo: any;
  TNNo: any;  
  //importExportType: any;
  endTimeExist: boolean = false;//edit- have endTime should not edit any fields in TS.
  status: any;
+ contractorName: any;
+ wpRemarks: any;
+ tnNo: any = null;
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -75,7 +79,7 @@ export class WpImportComponent implements OnInit {
         // blNo: ['', Validators.required],
         blNo: [null],
         quantity: ['', Validators.required],
-        location: ['', Validators.required],
+        location: [null],//show/hide field
         lorryNo: [null],
         resources: [null],
        // scn: [null],
@@ -125,6 +129,7 @@ export class WpImportComponent implements OnInit {
     this.containerNo = '' ;
     this.remarks = '' ;
     this.modeValue = "EXPORT";
+    this.exportMode = "Direct";
     this.document = 'import';
     this.scnChanged(this.scn);
     this.startTime = "12:49 PM";
@@ -152,6 +157,21 @@ export class WpImportComponent implements OnInit {
     }
     else{
       this.blList = {};
+    }
+  }
+
+  tnNoChange(){
+    if(this.tnNo=="null"||!this.tnNo){
+      this.cargoName = null;
+      this.quantity = "";
+      this.pieces = "";
+      this.weight = "0.00";
+    }
+    else{
+      this.cargoName = "BOAT (RR)";
+      this.quantity = "1";
+      this.pieces = "2";
+      this.weight = "10.00";
     }
   }
 
@@ -201,7 +221,13 @@ export class WpImportComponent implements OnInit {
       //this.submitTouched = false;
       return false;
     }
-    var data = {btn:this.btn}
+    var overloded;
+    if(this.quantity > this.balanceQuantity || (this.quantity && !this.balanceQuantity)){
+      overloded = true;
+    }else{
+      overloded = false;
+    }
+    var data = {btn:this.btn,overloded:overloded}
     //this.spinner.show();
     this.modalService2.openModal(type, data);
     // if(this.btn=='TS'){

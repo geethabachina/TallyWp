@@ -7,6 +7,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
+// import { ImageUploadModule } from './ng2-image-upload/image-upload.module';
 
 @NgModule({
   declarations: [],
@@ -19,12 +20,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     RouterModule,
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
-
     ToastrModule.forRoot({
       timeOut: 2500,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
-    })
+    }),
+    // ImageUploadModule.forRoot(),
   ],
   exports:[
     CommonModule,
@@ -33,7 +34,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     NgxSpinnerModule,
     BsDatepickerModule,
     RouterModule,
-    ModalModule
+    ModalModule,
+    // ImageUploadModule
   ]
 })
 export class SharedModule { }
