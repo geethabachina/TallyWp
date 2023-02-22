@@ -65,6 +65,38 @@ export class WpImportComponent implements OnInit {
  contractorName: any;
  wpRemarks: any;
  tnNo: any = null;
+ uploadUrl: any;
+//  http://aberezkin.com/ng2-image-upload/#/demo
+customStyle = {
+  selectButton: {
+    "background-color": "rgba(81,38,236,1)",
+    "border-radius": "25px",
+    "color": "#f8f9fa",
+    "margin": "0px"
+  },
+  clearButton: {
+    "background-color": "#FFF",
+    "border-radius": "25px",
+    "color": "#000",
+    "margin-left": "10px"
+  },
+  layout: {
+    // "background-color": "#6c757d",
+    "border": "1px solid #d5d4d4",
+    "box-shadow": "rgb(0 0 0 / 4%) 0px 3px 16px",
+    "border-radius": "25px",
+    "color": "#FFF",
+    "font-size": "12px",
+    // "margin": "10px",
+    // "padding-top": "5px",
+    "width": "100%"
+  },
+  previewPanel: {
+    "background-color": "#f8f9fa",
+    "border-radius": "0 0 25px 25px",
+  },
+  
+}
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -263,6 +295,36 @@ export class WpImportComponent implements OnInit {
     this.blNo = null;
     this.selectedData = {};
   }
+
+
+  onUploadStateChanged(state: boolean) {
+  //   setTimeout(() => {
+  //     var objDiv = document.getElementById('div_id');
+  //     objDiv.scrollTop = objDiv.scrollHeight
+  // }, 1000)
+
+  //   console.log(state,"+++++++++++")
+  //   if(state){
+  //     this.submitTouched = true
+  //   }else{
+  //     this.submitTouched = false
+  //   }
+  }
+
+  imageFinishedUploading(file: any) {
+    // if(file.serverResponse.status == 200 || file.serverResponse.status == 201){
+    //   var body=JSON.parse(file.serverResponse.response._body);
+    //   this.attachments.push({id : body.id});
+    // }
+  }
+
+  onRemoved(file){
+    // _.remove(this.attachments, (o:any) => {
+    //   var body = JSON.parse(file.serverResponse.response._body);
+    //   return o.id == body.id;
+    // });
+  }
+ 
 
 
 }

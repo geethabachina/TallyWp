@@ -8,6 +8,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
 // import { ImageUploadModule } from './ng2-image-upload/image-upload.module';
+import { ImageUploadModule } from "angular2-image-upload";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
@@ -25,7 +27,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
-    // ImageUploadModule.forRoot(),
+    HttpClientModule,
+    ImageUploadModule.forRoot(),
   ],
   exports:[
     CommonModule,
@@ -35,7 +38,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     BsDatepickerModule,
     RouterModule,
     ModalModule,
-    // ImageUploadModule
+    ImageUploadModule
   ]
 })
 export class SharedModule { }

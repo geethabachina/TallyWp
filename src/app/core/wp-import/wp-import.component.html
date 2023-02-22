@@ -51,23 +51,6 @@
                     <div class="col">
                                 <div class="row mb-2">
                                     <!-- [ngClass]="(btn=='TS'||btn=='TN') ?'col-6':'col-12'" -->
-                                    <!-- <div class="col-6" >
-                                        <label class="label-style required table-f-color">Photo</label>
-                                        <image-upload 
-                                        [url]="uploadUrl"
-                                        partName="file"
-                                        [max]="5"
-                                        buttonCaption="SELECT PHOTO"
-                                        (removed)="onRemoved($event)"
-                                        [extensions]="['jpeg','png','jpg']"
-                                        (uploadFinished)="imageFinishedUploading($event)"
-                                        [maxFileSize]="2097152"
-                                        [fileTooLargeMessage]="'File is bigger than 2MB. Please re-upload with a smaller file size'"
-                                        (uploadStateChanged)="onUploadStateChanged($event)">
-                                        </image-upload> 
-                                    </div> -->
-
-
                                     <div class="col-6" >
                                         <label class="label-style required table-f-color">SCN</label>
                                         <select class="form-control custom-form" [(ngModel)]="scn" (change)="scnChanged(scn)" name="scn" formControlName="scn" [disabled]="endTimeExist" [ngClass]="{ 'is-invalid': importForm.controls['scn'].touched && importForm.controls['scn'].invalid }">
@@ -162,7 +145,7 @@
                                     <div class="col-12">
                                         <label class="label-style table-f-color">B/L No</label>
                                         <!-- <input type="text" class="form-control custom-form" [(ngModel)]="blNo" [ngModelOptions]="{standalone: true}" placeholder="B/L No" disabled> -->
-                                        <select class="form-control custom-form" [(ngModel)]="blNo" [ngModelOptions]="{standalone: true}">
+                                        <select class="form-control custom-form" [(ngModel)]="blNo" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}">
                                             <option value=null>Select B/L No</option>
                                             <option value="SC2300337I">SC2300337I</option>
                                             <option value="RM20223DUMPKL01">RM20223DUMPKL01</option>
@@ -186,7 +169,7 @@
                                     <div class="col-6">
                                         <label class="label-style table-f-color">Cargo Name</label>
                                         <!-- <input type="text" class="form-control custom-form" [(ngModel)]="cargoName" [ngModelOptions]="{standalone: true}" placeholder="Cargo Name" disabled> -->
-                                        <select class="form-control custom-form" [(ngModel)]="cargoName" [ngModelOptions]="{standalone: true}">
+                                        <select class="form-control custom-form" [(ngModel)]="cargoName" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}">
                                             <option value=null>Select Cargo Name</option>
                                             <option value="BOAT (RR)">BOAT (RR)</option>
                                             <option value="COIL (BB)">COIL (BB)</option>
@@ -198,7 +181,7 @@
                                     </div>
                                     <div class="col-6">
                                         <label class="label-style table-f-color">Contractor Name</label>
-                                        <input type="text" class="form-control custom-form" [(ngModel)]="contractorName" [ngModelOptions]="{standalone: true}" placeholder="Contractor Name">
+                                        <input type="text" class="form-control custom-form" [(ngModel)]="contractorName" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}" placeholder="Contractor Name">
                                     </div>
                                 </div>
                                 <div  class="row mb-2">
@@ -277,7 +260,7 @@
                                             <option value="OWN HANDLING">OWN HANDLING</option>
                                         </select>
                                     </div>
-                                    <div *ngIf="btn=='TS'&&document=='export'||btn=='CR'||btn=='TN'" class="col-6">
+                                    <div *ngIf="btn=='TS'&&document!='export'||btn=='CR'||btn=='TN'" class="col-6">
                                         <label class="label-style table-f-color">Location</label>
                                         <select class="form-control custom-form" [(ngModel)]="location" [disabled]="endTimeExist" name="location" formControlName="location" [ngClass]="{ 'is-invalid': importForm.controls['location'].touched && importForm.controls['location'].invalid }">
                                             <option value=null>Select Location</option>
@@ -297,7 +280,7 @@
                                             <div *ngIf="importForm.controls['location'].errors && importForm.controls['location'].errors['required']">is required.</div>
                                         </div>
                                     </div>
-                                    <div *ngIf="btn=='TS'" class="col-6" [ngClass]="{ 'pt-2': document=='export'}">
+                                    <div *ngIf="btn=='TS'" class="col-6" [ngClass]="{ 'pt-2': document!='export'}">
                                         <label class="label-style table-f-color">Container No</label>
                                         <input type="text" class="form-control custom-form" [(ngModel)]="containerNo" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}" placeholder="Container No" >
                                     </div>
@@ -310,6 +293,30 @@
                                         <div *ngIf="importForm.controls['lorryNo'].touched && importForm.controls['lorryNo'].invalid" class="alert">
                                             <div *ngIf="importForm.controls['lorryNo'].errors && importForm.controls['lorryNo'].errors['required']">is required.</div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-12" >
+                                        <label class="label-style table-f-color">Photo</label>
+                                        <div style="margin-top: 20px;">
+                                            <image-upload 
+                                            [url]="uploadUrl"
+                                            partName="file"
+                                            [max]="4"
+                                            (removed)="onRemoved($event)"
+                                            [extensions]="['jpeg','png','jpg']"
+                                            (uploadFinished)="imageFinishedUploading($event)"
+                                            [maxFileSize]="2097152"
+                                            [fileTooLargeMessage]="'File is bigger than 2MB. Please re-upload with a smaller file size'"
+                                            (uploadStateChanged)="onUploadStateChanged($event)"
+                                            buttonCaption="UPLOAD PHOTO"
+                                            clearButtonCaption="CLEAR"
+                                            dropBoxMessage=""
+                                            [style]="customStyle" 
+                                            >
+                                            </image-upload> 
+                                        </div> 
+                                        <!-- <input type="text" class="form-control custom-form" [(ngModel)]="containerNo" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}" placeholder="Photo" > -->
                                     </div>
                                 </div>
 
