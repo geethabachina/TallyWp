@@ -214,4 +214,10 @@ body.small-menu .left-menu ul li a i, body.small-menu .third-level ul li a i{mar
 
 
 }
+@media (min-width:280px)  { 
+ .common-table{
+  max-height: calc(100vh - 190px);
+    overflow-y: auto;}
+ }
+
 

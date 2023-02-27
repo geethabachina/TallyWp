@@ -23,7 +23,7 @@
                 <div *ngIf="btn=='CR'" style="margin-bottom: -8px;display: flex;align-items: center; justify-content: space-between;">
                     <i style="color: #5126ec;margin-bottom: 4px;" routerLinkActive="active" routerLink="/selectOption" class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
                     <div style="text-align: center;"> 
-                        <h4 class="custom-title" style="justify-content: center;font-family: 'Cedarville Cursive'">CARGO RECEIVER</h4>
+                        <h4 class="custom-title" style="justify-content: center;font-family: 'Cedarville Cursive'">CARGO RECEIPT</h4>
                     </div>
                     <div></div>
                 </div>
@@ -295,9 +295,45 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- <div class="row mb-2">
+                                  <div class="col-12">
+                                    <label class="label-style table-f-color">Take Photo</label>
+                                    <div id="webcam">
+                                      <webcam
+                                        [trigger]="invokeObservable"
+                                        (imageCapture)="captureImg($event)"
+                                      ></webcam>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="pl-2">
+                                        <button class="btn btn-danger" (click)="getSnapshot()">
+                                          Capture Image
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <div id="results">Your taken image manifests here...</div>
+                                        <img [src]="webcamImage?.imageAsDataUrl" height="400px" />
+                                    </div>
+                                </div> -->
+
+                                <div class="row mb-2">
+                                    <div class="pl-2">
+                                        <button type="button" class="btn btn-primary custom-btn" style="width: 100%;" 
+                                            (click)="captureImage()">Capture Image
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <img [src]="image" *ngIf="image" [style.width]="'200px'" [style.height]="'200px'">
+                                </div>
+                                
                                 <div class="row mb-2">
                                     <div class="col-12" >
-                                        <label class="label-style table-f-color">Photo</label>
+                                        <label class="label-style table-f-color">Damage Photo</label>
                                         <div style="margin-top: 20px;">
                                             <image-upload 
                                             [url]="uploadUrl"
@@ -310,19 +346,19 @@
                                             [fileTooLargeMessage]="'File is bigger than 2MB. Please re-upload with a smaller file size'"
                                             (uploadStateChanged)="onUploadStateChanged($event)"
                                             buttonCaption="UPLOAD PHOTO"
-                                            clearButtonCaption="CLEAR"
+                                            clearButtonCaption="CLEAR ALL"
                                             dropBoxMessage=""
                                             [style]="customStyle" 
                                             >
                                             </image-upload> 
                                         </div> 
-                                        <!-- <input type="text" class="form-control custom-form" [(ngModel)]="containerNo" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}" placeholder="Photo" > -->
                                     </div>
                                 </div>
 
                                 <div class="row mb-2">
                                     <div class="col-12">
-                                        <label class="label-style table-f-color">Remarks</label>
+                                        <label *ngIf="btn=='TS'" class="label-style table-f-color">Tally Remarks</label>
+                                        <label *ngIf="btn=='CR'||btn=='TN'" class="label-style table-f-color">Remarks</label>
                                         <textarea name="remarks" class="form-control custom-form" [(ngModel)]="remarks" [disabled]="endTimeExist" [ngModelOptions]="{standalone: true}" rows="2" cols="50" placeholder="Remarks"></textarea>
                                     </div>
                                 </div>

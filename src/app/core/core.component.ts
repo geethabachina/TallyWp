@@ -19,6 +19,7 @@ export class CoreComponent implements OnInit {
     private router: Router,
     private dashboardService : DashboardService,
     private modalService2: ModalServiceService,
+    private route: ActivatedRoute
   ) {
     this.refresh = this.dashboardService.refreshListBtnBg$.subscribe(() => {
       var element1 = document.getElementById("list");
@@ -36,6 +37,18 @@ export class CoreComponent implements OnInit {
 
   ngOnInit(): void {
     this.btnType = localStorage.getItem('btnType');
+    if(this.router.url.includes("core/wpApprove")){
+      var element1 = document.getElementById("list");
+      element1?.classList.add("bg-color-blue");
+      var element2 = document.getElementById("add");
+      element2?.classList.remove("bg-color-blue");
+    }
+    else{
+      var element1 = document.getElementById("list");
+      element1?.classList.remove("bg-color-blue");
+      var element2 = document.getElementById("add");
+      element2?.classList.add("bg-color-blue");
+    }
   }
 
   logout(){

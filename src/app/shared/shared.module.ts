@@ -10,6 +10,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 // import { ImageUploadModule } from './ng2-image-upload/image-upload.module';
 import { ImageUploadModule } from "angular2-image-upload";
 import { HttpClientModule } from '@angular/common/http';
+import { WebcamModule } from 'ngx-webcam';
 
 @NgModule({
   declarations: [],
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     }),
     HttpClientModule,
     ImageUploadModule.forRoot(),
+    WebcamModule
   ],
   exports:[
     CommonModule,
@@ -38,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     BsDatepickerModule,
     RouterModule,
     ModalModule,
-    ImageUploadModule
+    ImageUploadModule,
+    WebcamModule
   ]
 })
 export class SharedModule { }

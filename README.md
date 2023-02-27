@@ -21,6 +21,8 @@ ng build --prod  (dist folder will generate)
 npx cap sync
 npx cap open android  (andriod studio will open)
 
+npx cap copy (to update changes in studio)
+
 ## Run this commands for ios app 
 npm install @capacitor/ios 
 npx cap add ios
@@ -29,5 +31,16 @@ npx cap open ios
 ## Generating apk
 Build > Build Bundles(s)/APK(s) > click on "locate" link in the bottom  
 
+## apk path
+\android\app\build\outputs\apk\debug\app-debug.apk
+
 ## To change the app title
-have to chane name in package.json file ("name": "Tally")
+change name in package.json file ("name": "Operation")
+change name in capacitor.config.ts file (appName: "Operation")
+
+## To install multiple capacitor apps in same mobile
+appId in capacitor.config.ts file should not be same in both apps (have to change appId in capacitor.config.ts file)
+
+## To change app icon 
+open andriod studio > res > right click New > Image Asset > Path (choose image path) > next > finish 
+now generate apk and install

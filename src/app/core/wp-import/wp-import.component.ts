@@ -7,6 +7,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { IfStmt } from '@angular/compiler';
 import { DashboardService } from 'src/app/services/dashboard.service';
 import { ModalServiceService } from 'src/app/shared/services/modal-service/modal-service.service';
+import { Observable, Subject } from 'rxjs';
+import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
+import { Camera,CameraResultType,CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-wp-import',
@@ -95,8 +98,13 @@ customStyle = {
     "background-color": "#f8f9fa",
     "border-radius": "0 0 25px 25px",
   },
-  
 }
+private trigger: Subject<any> = new Subject();
+public webcamImage!: WebcamImage;
+private nextWebcam: Subject<any> = new Subject();
+sysImage = '';
+image='';
+
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -324,6 +332,48 @@ customStyle = {
     //   return o.id == body.id;
     // });
   }
+
+
+  // public getSnapshot(): void {
+  //   //debugger
+  //   this.trigger.next(void 0);
+  // }
+  // public captureImg(webcamImage: WebcamImage): void {
+  //   //debugger
+  //   this.webcamImage = webcamImage;
+  //   this.sysImage = webcamImage!.imageAsDataUrl;
+  //   console.info('got webcam image', this.sysImage);
+  // }
+  // public get invokeObservable(): Observable<any> {
+  //   //debugger
+  //   return this.trigger.asObservable();
+  // }
+  // public get nextWebcamObservable(): Observable<any> {
+  //   //debugger
+  //   return this.nextWebcam.asObservable();
+  // }
+
+
+
+async captureImage(){
+  const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      source: CameraSource.Prompt,
+      resultType: CameraResultType.Base64
+  });
+
+  if(image){
+  this.image = `data:image/jpeg;base64,${image.base64String}`!;
+  }
+}
+
+
+
+  // https://www.youtube.com/watch?v=V2Wn2JROUEo&t=998s
+  // https://capacitorjs.com/docs/apis/camera
+  // https://www.positronx.io/angular-capture-images-from-system-webcam-tutorial/
+  
  
 
 
